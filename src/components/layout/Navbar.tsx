@@ -1,34 +1,32 @@
 import { useEffect, useRef, useState } from 'react';
 import { ChevronDown, Menu, X } from 'lucide-react';
-import type { NavLink, NavigationContent } from '../types';
-import ButtonLink from './ButtonLink';
-import N7Logo from './N7Logo';
+import { useLocation } from 'react-router-dom';
+import type { NavChild, NavLink, SiteContent } from '../../types';
+import Button from '../ui/Button';
+import SmartLink from '../ui/SmartLink';
 
 interface NavbarProps {
-  content: NavigationContent;
+  site: SiteContent;
 }
 
-interface DesktopDropdownProps {
+interface DropdownProps {
   link: NavLink;
-  items: NavLink[];
+  items: NavChild[];
+  useFooterLabels?: boolean;
 }
 
-function DesktopDropdown({ link, items }: DesktopDropdownProps) {
+export function NavDropdown({ link, items, useFooterLabels = false }: DropdownProps) {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (!isOpen) return undefined;
-
     const handlePointerDown = (event: PointerEvent): void => {
-      if (containerRef.current && !containerRef.current.contains(event.target as Node)) {
-        setIsOpen(false);
-      }
+      if (containerRef.current && !containerRef.current.contains(event.target as Node)) setIsOpen(false);
     };
     const handleKeyDown = (event: KeyboardEvent): void => {
       if (event.key === 'Escape') setIsOpen(false);
     };
-
     document.addEventListener('pointerdown', handlePointerDown);
     document.addEventListener('keydown', handleKeyDown);
     return () => {
@@ -49,28 +47,28 @@ function DesktopDropdown({ link, items }: DesktopDropdownProps) {
         aria-haspopup="true"
         aria-expanded={isOpen}
         onClick={() => setIsOpen((previous) => !previous)}
-        className="group flex items-center gap-1.5 whitespace-nowrap py-2 text-lg text-white transition-colors duration-300 hover:text-n7-gold focus-visible:text-n7-gold focus-visible:outline-none 2xl:text-xl"
+        className="relative flex items-center py-[26px] pl-5 pr-[30px] text-base leading-5 text-white transition-colors duration-300 hover:text-n7-sky focus-visible:text-n7-sky focus-visible:outline-none"
       >
         {link.label}
         <ChevronDown
           aria-hidden="true"
-          strokeWidth={2.75}
-          className={`h-5 w-5 transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}
+          strokeWidth={3}
+          className={`absolute right-2.5 top-1/2 h-4 w-4 -translate-y-1/2 transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}
         />
       </button>
 
       {isOpen && (
-        <div className="absolute left-1/2 top-full z-50 -translate-x-1/2 pt-4">
-          <ul className="min-w-[240px] animate-fade-down overflow-hidden rounded-lg border-2 border-white bg-n7-navy py-2 shadow-nav">
+        <div className="absolute left-0 top-full z-50 min-w-full">
+          <ul className="animate-fade-down overflow-hidden rounded-xl bg-n7-sky py-2">
             {items.map((item) => (
               <li key={item.href}>
-                <a
+                <SmartLink
                   href={item.href}
                   onClick={() => setIsOpen(false)}
-                  className="block px-5 py-3 text-base text-white transition-all duration-300 hover:bg-white/10 hover:pl-7 hover:text-n7-gold 2xl:text-lg"
+                  className="block whitespace-nowrap px-5 py-[5px] text-sm leading-5 text-[#222222] transition-all duration-300 hover:text-[14.5px] hover:text-n7-navy"
                 >
-                  {item.label}
-                </a>
+                  {useFooterLabels ? item.footerLabel : item.label}
+                </SmartLink>
               </li>
             ))}
           </ul>
@@ -92,13 +90,13 @@ function MobileItem({ link, onNavigate }: MobileItemProps) {
   if (children.length === 0) {
     return (
       <li>
-        <a
+        <SmartLink
           href={link.href}
           onClick={onNavigate}
-          className="block rounded-md px-3 py-3 text-lg text-white transition-colors duration-300 hover:bg-white/10 hover:text-n7-gold"
+          className="block px-5 py-2.5 text-center text-lg text-white transition-colors duration-300 hover:text-n7-sky"
         >
           {link.label}
-        </a>
+        </SmartLink>
       </li>
     );
   }
@@ -109,13 +107,13 @@ function MobileItem({ link, onNavigate }: MobileItemProps) {
         type="button"
         aria-expanded={isExpanded}
         onClick={() => setIsExpanded((previous) => !previous)}
-        className="flex w-full items-center justify-between rounded-md px-3 py-3 text-left text-lg text-white transition-colors duration-300 hover:bg-white/10 hover:text-n7-gold"
+        className="mx-auto flex items-center gap-1.5 px-5 py-2.5 text-lg text-white transition-colors duration-300 hover:text-n7-sky"
       >
         {link.label}
         <ChevronDown
           aria-hidden="true"
-          strokeWidth={2.75}
-          className={`h-5 w-5 transition-transform duration-300 ${isExpanded ? 'rotate-180' : ''}`}
+          strokeWidth={3}
+          className={`h-4 w-4 transition-transform duration-300 ${isExpanded ? 'rotate-180' : ''}`}
         />
       </button>
       <div
@@ -123,16 +121,16 @@ function MobileItem({ link, onNavigate }: MobileItemProps) {
           isExpanded ? 'visible grid-rows-[1fr] opacity-100' : 'invisible grid-rows-[0fr] opacity-0'
         }`}
       >
-        <ul className="ml-3 overflow-hidden border-l-2 border-n7-gold/70 pl-3">
+        <ul className="mx-auto w-fit overflow-hidden rounded-xl bg-n7-sky">
           {children.map((child) => (
             <li key={child.href}>
-              <a
+              <SmartLink
                 href={child.href}
                 onClick={onNavigate}
-                className="block rounded-md px-3 py-2.5 text-base text-white/90 transition-colors duration-300 hover:bg-white/10 hover:text-n7-gold"
+                className="block px-6 py-2 text-center text-base text-[#222222] transition-colors duration-300 hover:text-n7-navy"
               >
                 {child.label}
-              </a>
+              </SmartLink>
             </li>
           ))}
         </ul>
@@ -141,11 +139,16 @@ function MobileItem({ link, onNavigate }: MobileItemProps) {
   );
 }
 
-export default function Navbar({ content }: NavbarProps) {
+export default function Navbar({ site }: NavbarProps) {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
+  const location = useLocation();
 
   useEffect(() => {
-    const desktopQuery = window.matchMedia('(min-width: 1280px)');
+    setIsMenuOpen(false);
+  }, [location.pathname]);
+
+  useEffect(() => {
+    const desktopQuery = window.matchMedia('(min-width: 1024px)');
     const handleChange = (event: MediaQueryListEvent): void => {
       if (event.matches) setIsMenuOpen(false);
     };
@@ -155,58 +158,51 @@ export default function Navbar({ content }: NavbarProps) {
 
   useEffect(() => {
     if (!isMenuOpen) return undefined;
-
-    const previousOverflow = document.body.style.overflow;
-    document.body.style.overflow = 'hidden';
     const handleKeyDown = (event: KeyboardEvent): void => {
       if (event.key === 'Escape') setIsMenuOpen(false);
     };
     document.addEventListener('keydown', handleKeyDown);
-
-    return () => {
-      document.body.style.overflow = previousOverflow;
-      document.removeEventListener('keydown', handleKeyDown);
-    };
+    return () => document.removeEventListener('keydown', handleKeyDown);
   }, [isMenuOpen]);
 
   const closeMenu = (): void => setIsMenuOpen(false);
 
   return (
-    <header className="fixed inset-x-3 top-3 z-50 sm:inset-x-6 lg:inset-x-[4.7%] lg:top-[10px]">
+    <header className="fixed inset-x-5 top-2.5 z-50 mx-auto max-w-nav lg:inset-x-[72px]">
       <nav
         aria-label="Navigation principale"
-        className="rounded-[10px] border-2 border-white bg-n7-navy shadow-nav"
+        className="rounded-[10px] border-2 border-white bg-n7-navy px-2 py-[5px] shadow-nav lg:px-5"
       >
-        <div className="flex h-[72px] items-center justify-between px-4 sm:px-6 lg:h-[100px] lg:px-10 xl:px-16 2xl:h-[114px] 2xl:pl-[182px] 2xl:pr-[150px]">
-          <a
-            href={content.homeHref}
-            aria-label={`${content.brandName} – Accueil`}
+        <div className="mx-auto flex h-[60px] max-w-[1260px] items-center justify-between pl-3 pr-1 lg:h-[76px] lg:pl-[30px] lg:pr-[15px]">
+          <SmartLink
+            href={site.homeHref}
+            ariaLabel={`${site.name} – Accueil`}
             className="flex shrink-0 items-center transition-opacity duration-300 hover:opacity-80"
           >
-            <N7Logo className="h-[58px] w-auto lg:h-[80px] 2xl:h-[90px]" title={content.brandName} />
-          </a>
+            <img src={site.logo.src} alt={site.logo.alt} className="h-[52px] w-auto lg:h-[76px]" />
+          </SmartLink>
 
-          <div className="hidden items-center xl:flex">
-            <ul className="flex items-center gap-7 2xl:gap-[38px]">
-              {content.links.map((link) => {
+          <div className="hidden items-center lg:flex">
+            <ul className="flex items-center">
+              {site.navigation.map((link) => {
                 const children = link.children ?? [];
                 return (
                   <li key={link.label}>
                     {children.length > 0 ? (
-                      <DesktopDropdown link={link} items={children} />
+                      <NavDropdown link={link} items={children} />
                     ) : (
-                      <a
+                      <SmartLink
                         href={link.href}
-                        className="relative whitespace-nowrap py-2 text-lg text-white transition-colors duration-300 after:absolute after:-bottom-0.5 after:left-0 after:h-0.5 after:w-full after:origin-left after:scale-x-0 after:bg-n7-gold after:transition-transform after:duration-300 hover:text-n7-gold hover:after:scale-x-100 2xl:text-xl"
+                        className="px-2.5 py-[5px] text-base leading-5 tracking-[0.25px] text-white transition-colors duration-300 hover:text-n7-sky"
                       >
                         {link.label}
-                      </a>
+                      </SmartLink>
                     )}
                   </li>
                 );
               })}
             </ul>
-            <ButtonLink cta={content.cta} className="ml-10 whitespace-nowrap 2xl:ml-[60px]" />
+            <Button link={site.contactCta} className="ml-[30px] whitespace-nowrap" />
           </div>
 
           <button
@@ -215,26 +211,30 @@ export default function Navbar({ content }: NavbarProps) {
             aria-expanded={isMenuOpen}
             aria-controls="mobile-menu"
             aria-label={isMenuOpen ? 'Fermer le menu' : 'Ouvrir le menu'}
-            className="flex h-11 w-11 items-center justify-center rounded-lg text-white transition-all duration-300 hover:bg-white/10 hover:text-n7-gold xl:hidden"
+            className={`flex h-12 w-12 items-center justify-center text-white transition-colors duration-300 lg:hidden ${
+              isMenuOpen ? 'bg-[#C8C8C8]' : 'hover:text-n7-sky'
+            }`}
           >
-            {isMenuOpen ? <X className="h-7 w-7" aria-hidden="true" /> : <Menu className="h-7 w-7" aria-hidden="true" />}
+            {isMenuOpen ? <X className="h-6 w-6" aria-hidden="true" /> : <Menu className="h-6 w-6" aria-hidden="true" />}
           </button>
         </div>
 
         <div
           id="mobile-menu"
-          className={`grid transition-all duration-300 ease-out xl:hidden ${
+          className={`grid transition-all duration-300 ease-out lg:hidden ${
             isMenuOpen ? 'visible grid-rows-[1fr] opacity-100' : 'invisible grid-rows-[0fr] opacity-0'
           }`}
         >
           <div className="overflow-hidden">
-            <div className="max-h-[calc(100svh-110px)] overflow-y-auto border-t border-white/20 px-4 pb-6 pt-3 sm:px-6">
-              <ul className="flex flex-col gap-1">
-                {content.links.map((link) => (
+            <div className="max-h-[calc(100svh-100px)] overflow-y-auto pb-5 pt-3">
+              <ul className="flex flex-col">
+                {site.navigation.map((link) => (
                   <MobileItem key={link.label} link={link} onNavigate={closeMenu} />
                 ))}
               </ul>
-              <ButtonLink cta={content.cta} onClick={closeMenu} className="mt-5 w-full py-3" />
+              <div className="mt-2 flex justify-center">
+                <Button link={site.contactCta} onClick={closeMenu} className="text-lg" />
+              </div>
             </div>
           </div>
         </div>
