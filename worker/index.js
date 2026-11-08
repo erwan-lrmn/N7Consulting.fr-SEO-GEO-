@@ -1,10 +1,18 @@
 const SITE_URL = 'https://n7consulting.erwan-2b1.workers.dev';
+const CANONICAL_HOST = 'n7consulting.fr';
 
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
 
-    // Force HTTPS for every hostname (workers.dev and future custom domains).
+    // Un seul saut de redirection, même depuis http://www : HTTPS + apex en une fois.
+    if (url.hostname === `www.${CANONICAL_HOST}`) {
+      url.protocol = 'https:';
+      url.hostname = CANONICAL_HOST;
+      return Response.redirect(url.toString(), 301);
+    }
+
+    // Force HTTPS for every other hostname (workers.dev and the apex domain).
     if (url.protocol === 'http:') {
       url.protocol = 'https:';
       return Response.redirect(url.toString(), 301);

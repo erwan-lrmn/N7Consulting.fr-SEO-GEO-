@@ -18,7 +18,10 @@ export default function OffersSection({ title, groups, categories }: OffersSecti
   return (
     <section id="prestations" className="bg-white px-[5%]">
       <div className="mx-auto max-w-[1280px] py-16">
-        <h2 className="mb-2.5 mt-5 text-[28px] font-bold leading-9 text-black sm:text-4xl sm:leading-[45px]">{title}</h2>
+        <h2 className="mb-2.5 mt-5 text-[28px] font-bold leading-9 text-black sm:text-4xl sm:leading-[45px]">
+          {title}
+          <span className="sr-only"> en digital &amp; data, ingénierie et éco-ingénierie</span>
+        </h2>
 
         <div className="mt-[17px] grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3 lg:gap-7">
           {groups.map((group, groupIndex) => {

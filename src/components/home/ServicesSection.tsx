@@ -13,7 +13,10 @@ export default function ServicesSection({ content, asPageTitle = false }: Servic
   return (
     <section id="prestations" className="bg-white px-[5%]">
       <div className="mx-auto max-w-[1280px] py-16">
-        <Title className="mb-2.5 mt-5 text-[28px] font-bold leading-9 text-black sm:text-4xl sm:leading-[45px]">{content.title}</Title>
+        <Title className="mb-2.5 mt-5 text-[28px] font-bold leading-9 text-black sm:text-4xl sm:leading-[45px]">
+          {asPageTitle && <span className="sr-only">Nos prestations à Toulouse : </span>}
+          {content.title}
+        </Title>
         {content.description && (
           <p className="mb-2.5 max-w-[1024px] text-lg leading-[28.8px] text-black">{content.description}</p>
         )}
@@ -25,6 +28,8 @@ export default function ServicesSection({ content, asPageTitle = false }: Servic
                   <img
                     src={item.image.src}
                     alt={item.image.alt}
+                    width={1200}
+                    height={675}
                     loading="lazy"
                     className="mx-auto h-[135px] w-auto max-w-full object-contain"
                   />

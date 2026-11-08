@@ -77,10 +77,10 @@ export const notFoundContent: NotFoundContent = {
 
 export const pageTitles: PageTitles = {
   home: 'N7 Consulting | Junior-Entreprise de l’ENSEEIHT à Toulouse',
-  servicesOverview: 'Nos prestations',
-  about: 'Qui sommes-nous ?',
-  contact: 'Contact',
-  news: 'Actualités',
+  servicesOverview: 'Nos prestations à Toulouse',
+  about: 'Qui sommes-nous à Toulouse ?',
+  contact: 'Contact à Toulouse',
+  news: 'Actualités à Toulouse',
   legal: 'Mentions légales',
   notFound: 'Page introuvable',
   suffix: ' | N7 Consulting',

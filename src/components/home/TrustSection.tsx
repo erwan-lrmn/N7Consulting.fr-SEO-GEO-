@@ -29,7 +29,7 @@ function LogoMarquee({ logos }: { logos: BrandLogo[] }) {
                 >
                   <img
                     src={logo.src}
-                    alt={logo.alt}
+                    alt={logo.alt.includes('N7 Consulting') ? logo.alt : `${logo.alt}, partenaire de N7 Consulting`}
                     width={logo.width}
                     height={logo.height}
                     loading="lazy"
@@ -118,6 +118,7 @@ export default function TrustSection({ content }: TrustSectionProps) {
             </p>
             <h2 className="mt-6 max-w-[480px] text-[40px] font-bold leading-[1.05] sm:text-5xl lg:text-6xl">
               {titleWords.join(' ')} <span className="text-n7-sky">{lastWord}</span>
+              <span className="sr-only"> pour leurs projets digitaux, data et d’ingénierie</span>
             </h2>
             <SmartLink
               href="/contact"

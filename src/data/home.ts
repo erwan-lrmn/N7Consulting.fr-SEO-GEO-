@@ -43,7 +43,7 @@ export const servicesOverview: ServicesOverviewContent = {
 
 export const homeContent: HomeContent = {
   hero: {
-    title: 'N7 Consulting, l’innovation étudiante au cœur de vos projets',
+    title: 'N7 Consulting, la Junior-Entreprise de l’ENSEEIHT à Toulouse',
     descriptionLines: [
       'Parce que chaque projet mérite une approche innovante,',
       'N7 Consulting, la Junior-Entreprise de l’ENSEEIHT à Toulouse, met à votre disposition l’expertise et le dynamisme de ses étudiants ingénieurs.',
@@ -81,10 +81,10 @@ export const homeContent: HomeContent = {
     ],
   },
   stats: [
-    { prefix: 'Top', value: 3, label: 'Parmi les 3 meilleurs JE de France en 2022' },
+    { prefix: 'Top', value: 3, label: 'Parmi les 3 meilleures Junior-Entreprises de France en 2022' },
     { prefix: '+', value: 600, label: 'Projets réalisés' },
     { value: 97, suffix: '%', label: 'Taux de satisfaction' },
-    { value: 49, suffix: 'ans', label: 'd’expérience' },
+    { value: 49, suffix: 'ans', label: 'd’expérience chez N7 Consulting' },
   ],
   services: { ...servicesOverview, title: 'Nos offres', description: '' },
   trust: {

@@ -20,7 +20,7 @@ export default function ServicePage({ slug }: ServicePageProps) {
 
   return (
     <>
-      <ServiceHero hero={page.hero} />
+      <ServiceHero hero={page.hero} metaTitle={page.metaTitle} />
       <div className="relative bg-n7-navy px-5 pb-10 sm:px-10">
         <Wave variant="navyAbove" />
         {page.blocks.map((block) => {

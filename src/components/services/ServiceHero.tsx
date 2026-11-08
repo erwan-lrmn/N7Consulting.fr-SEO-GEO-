@@ -3,9 +3,10 @@ import Button from '../ui/Button';
 
 interface ServiceHeroProps {
   hero: ServicePageContent['hero'];
+  metaTitle: string;
 }
 
-export default function ServiceHero({ hero }: ServiceHeroProps) {
+export default function ServiceHero({ hero, metaTitle }: ServiceHeroProps) {
   return (
     <section className="relative isolate flex min-h-[640px] items-center justify-center overflow-hidden px-6 pb-24 pt-32 sm:px-[10vw] lg:h-[98vh] lg:pb-16">
       <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10">
@@ -16,6 +17,7 @@ export default function ServiceHero({ hero }: ServiceHeroProps) {
       </div>
       <div className="w-full max-w-[1152px] text-center">
         <h1 className="mb-2.5 mt-5 font-serif text-[34px] font-bold leading-[42px] text-n7-navy sm:text-5xl sm:leading-[57.6px]">
+          <span className="sr-only">{metaTitle} : </span>
           {hero.titleLines.map((line, index) => (
             <span key={line} className="block">
               {index > 0 && <span className="sr-only"> </span>}

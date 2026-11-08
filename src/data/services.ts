@@ -38,7 +38,7 @@ export const methodContent: MethodContent = {
 export const servicePages: Record<ServiceSlug, ServicePageContent> = {
   'digital-data': {
     slug: 'digital-data',
-    metaTitle: 'Digital & Data',
+    metaTitle: 'Digital & Data à Toulouse',
     hero: {
       titleLines: ['Transformez vos idées digitales en solutions innovantes'],
       subtitle:
@@ -163,7 +163,7 @@ export const servicePages: Record<ServiceSlug, ServicePageContent> = {
   },
   'ingenierie-it': {
     slug: 'ingenierie-it',
-    metaTitle: 'Ingénierie & IT',
+    metaTitle: 'Ingénierie & IT à Toulouse',
     hero: {
       titleLines: ["Transformez vos défis industriels en solutions d'ingénierie sur mesure"],
       subtitle:
@@ -225,7 +225,7 @@ export const servicePages: Record<ServiceSlug, ServicePageContent> = {
   },
   'eco-ingenierie': {
     slug: 'eco-ingenierie',
-    metaTitle: 'Éco-Ingénierie',
+    metaTitle: 'Éco-Ingénierie à Toulouse',
     hero: {
       titleLines: ['Soyez acteur de la révolution énergétique :optez pour', "l'Éco-Ingénierie !"],
       subtitle:

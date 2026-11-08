@@ -29,7 +29,7 @@ export default function Hero({ content }: HeroProps) {
         sizes="100vw"
         width={1920}
         height={1284}
-        alt="Vue de l’ENSEEIHT depuis le canal du Midi"
+        alt="Vue de l’ENSEEIHT, école d’ingénieurs de N7 Consulting à Toulouse"
         {...HERO_IMAGE_PRIORITY}
         decoding="async"
         className="absolute inset-0 h-full w-full scale-105 object-cover blur-[2px]"

@@ -19,7 +19,10 @@ export default function NewsPage() {
         }}
       >
         <div className="mx-auto max-w-[750px] pt-0 text-center lg:pt-20">
-          <h1 className="mb-2.5 mt-5 font-serif text-[40px] font-bold leading-[48px] sm:text-5xl sm:leading-[57.6px]">{newsContent.title}</h1>
+          <h1 className="mb-2.5 mt-5 font-serif text-[40px] font-bold leading-[48px] sm:text-5xl sm:leading-[57.6px]">
+            <span className="sr-only">N7 Consulting à Toulouse : </span>
+            {newsContent.title}
+          </h1>
           <p className="mb-6 text-lg leading-7 sm:text-2xl sm:leading-9">{newsContent.intro}</p>
         </div>
         <Wave variant="navyBelow" />

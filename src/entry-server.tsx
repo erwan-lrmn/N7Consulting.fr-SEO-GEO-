@@ -3,7 +3,7 @@ import { Route, Routes } from 'react-router-dom';
 import { StaticRouter } from 'react-router-dom/server';
 import Layout from './components/layout/Layout';
 import { articles } from './data/articles';
-import { contactContent, newsContent, pageTitles } from './data/pages';
+import { pageTitles } from './data/pages';
 import { servicePages } from './data/services';
 import AboutPage from './pages/AboutPage';
 import ArticlePage from './pages/ArticlePage';
@@ -23,32 +23,62 @@ export interface PrerenderRoute {
 
 /** Toutes les routes générées en HTML statique au build. */
 export const prerenderRoutes: PrerenderRoute[] = [
-  { path: '/', title: pageTitles.home },
-  { path: '/nos-prestations', title: `${pageTitles.servicesOverview}${pageTitles.suffix}` },
+  {
+    path: '/',
+    title: pageTitles.home,
+    description:
+      'N7 Consulting, Junior-Entreprise de l’ENSEEIHT à Toulouse : digital & data, ingénierie et éco-ingénierie au service de vos projets.',
+  },
+  {
+    path: '/nos-prestations',
+    title: `${pageTitles.servicesOverview}${pageTitles.suffix}`,
+    description:
+      'Découvrez les prestations de N7 Consulting, Junior-Entreprise de l’ENSEEIHT à Toulouse : digital & data, ingénierie et éco-ingénierie.',
+  },
   {
     path: '/digital-data',
     title: `${servicePages['digital-data'].metaTitle}${pageTitles.suffix}`,
-    description: servicePages['digital-data'].hero.subtitle,
+    description: `N7 Consulting à Toulouse : ${servicePages['digital-data'].hero.subtitle}`,
   },
   {
     path: '/ingenierie-it',
     title: `${servicePages['ingenierie-it'].metaTitle}${pageTitles.suffix}`,
-    description: servicePages['ingenierie-it'].hero.subtitle,
+    description: `N7 Consulting à Toulouse : ${servicePages['ingenierie-it'].hero.subtitle}`,
   },
   {
     path: '/eco-ingenierie',
     title: `${servicePages['eco-ingenierie'].metaTitle}${pageTitles.suffix}`,
-    description: servicePages['eco-ingenierie'].hero.subtitle,
+    description: `N7 Consulting à Toulouse : ${servicePages['eco-ingenierie'].hero.subtitle}`,
   },
-  { path: '/qui-sommes-nous', title: `${pageTitles.about}${pageTitles.suffix}` },
-  { path: '/actualites', title: `${pageTitles.news}${pageTitles.suffix}`, description: newsContent.intro },
+  {
+    path: '/qui-sommes-nous',
+    title: `${pageTitles.about}${pageTitles.suffix}`,
+    description:
+      'N7 Consulting, Junior-Entreprise de l’ENSEEIHT à Toulouse depuis 1977 : notre mission, notre équipe, nos alumnis et notre histoire.',
+  },
+  {
+    path: '/actualites',
+    title: `${pageTitles.news}${pageTitles.suffix}`,
+    description:
+      'Les actualités de N7 Consulting, Junior-Entreprise de l’ENSEEIHT à Toulouse : études de cas, événements et conseils pour vos projets.',
+  },
   ...articles.map((article) => ({
     path: `/actualites/${article.slug}`,
     title: `${article.title}${pageTitles.suffix}`,
     description: article.excerpt,
   })),
-  { path: '/contact', title: `${pageTitles.contact}${pageTitles.suffix}`, description: contactContent.intro },
-  { path: '/mentions-legales', title: `${pageTitles.legal}${pageTitles.suffix}` },
+  {
+    path: '/contact',
+    title: `${pageTitles.contact}${pageTitles.suffix}`,
+    description:
+      'Contactez N7 Consulting, Junior-Entreprise de l’ENSEEIHT à Toulouse, pour un devis ou un projet en digital & data, ingénierie ou éco-ingénierie.',
+  },
+  {
+    path: '/mentions-legales',
+    title: `${pageTitles.legal}${pageTitles.suffix}`,
+    description:
+      'Mentions légales et politique de confidentialité de N7 Consulting, Junior-Entreprise de l’ENSEEIHT à Toulouse.',
+  },
 ];
 
 export const notFoundTitle = `${pageTitles.notFound}${pageTitles.suffix}`;

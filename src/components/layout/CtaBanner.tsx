@@ -16,7 +16,10 @@ export default function CtaBanner({ content, arcColor }: CtaBannerProps) {
     >
       <Wave variant="arc" color={arcColor} />
       <div className="relative max-w-[768px] pt-6 text-center">
-        <h2 className="mb-2.5 mt-5 font-serif text-[28px] font-bold leading-[38px] sm:text-4xl sm:leading-[45px]">{content.title}</h2>
+        <h2 className="mb-2.5 mt-5 font-serif text-[28px] font-bold leading-[38px] sm:text-4xl sm:leading-[45px]">
+          {content.title}
+          <span className="sr-only"> avec N7 Consulting, Junior-Entreprise de l’ENSEEIHT à Toulouse</span>
+        </h2>
         <p className="mb-2.5 text-lg leading-[28.8px]">{content.text}</p>
         <Button link={content.button} />
       </div>

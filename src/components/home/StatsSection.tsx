@@ -119,7 +119,10 @@ export default function StatsSection({ stats, partnersTitle, partners }: StatsSe
       </div>
 
       <div className="relative z-[3] mx-auto mt-[54px] max-w-[85%]">
-        <h2 className="mb-2.5 mt-5 text-center text-[28px] font-bold leading-[45px] sm:text-4xl sm:leading-[45px]">{partnersTitle}</h2>
+        <h2 className="mb-2.5 mt-5 text-center text-[28px] font-bold leading-[45px] sm:text-4xl sm:leading-[45px]">
+          {partnersTitle}
+          <span className="sr-only"> de N7 Consulting</span>
+        </h2>
         <ul className="mt-10 flex flex-wrap items-center justify-center gap-x-8 gap-y-8 lg:flex-nowrap lg:justify-between lg:gap-6">
           {partners.map((partner) => (
             <li key={partner.name}>

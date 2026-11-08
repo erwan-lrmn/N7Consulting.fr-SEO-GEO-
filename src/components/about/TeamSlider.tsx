@@ -14,7 +14,7 @@ function MemberCard({ member, isClone = false }: { member: TeamMember; isClone?:
       <div className="overflow-hidden rounded-t-[10px]">
         <img
           src={member.photo}
-          alt={`${member.firstName} ${member.lastName}, ${member.role}`}
+          alt={`${member.firstName} ${member.lastName}, ${member.role} de N7 Consulting`}
           loading="lazy"
           className="mb-3 aspect-[215/230] w-full object-cover transition-transform duration-500 group-hover:scale-105"
         />

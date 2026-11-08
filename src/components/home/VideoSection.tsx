@@ -12,6 +12,7 @@ export default function VideoSection({ content }: VideoSectionProps) {
       <div className="mx-auto max-w-[1296px] py-16 lg:py-[86.4px]">
         <h2 className="mb-[62px] text-center text-[40px] font-bold leading-[1.05] text-n7-navy sm:text-5xl lg:text-6xl">
           {content.sectionTitle}
+          <span className="sr-only"> : N7 Consulting dans les médias</span>
         </h2>
 
         <div className="grid grid-cols-1 gap-[112px] md:grid-cols-2">

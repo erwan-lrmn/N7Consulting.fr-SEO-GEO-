@@ -11,7 +11,10 @@ export default function LegalPage() {
     <>
       <section className="mx-5 my-[140px] text-n7-graphite sm:mx-[10%] lg:my-[180px]">
         <div className="mx-auto max-w-[1152px]">
-          <h1 className="mb-2.5 mt-5 text-[32px] font-bold leading-10 sm:text-[38px] sm:leading-[44px]">{legalContent.title}</h1>
+          <h1 className="mb-2.5 mt-5 text-[32px] font-bold leading-10 sm:text-[38px] sm:leading-[44px]">
+            <span className="sr-only">N7 Consulting : </span>
+            {legalContent.title}
+          </h1>
           {legalContent.sections.map((section) => (
             <div key={section.heading ?? 'intro'}>
               {section.heading && <h2 className="mt-2.5 text-2xl leading-8 text-black">{section.heading}</h2>}

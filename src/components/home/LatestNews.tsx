@@ -17,7 +17,10 @@ export default function LatestNews({ content, articles, readMore }: LatestNewsPr
       <div className="mx-auto max-w-[1180px] px-6 pb-16 pt-[73.6px]">
         <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
           <div>
-            <h2 className="mb-2.5 mt-5 text-[28px] font-bold leading-9 text-black sm:text-4xl sm:leading-[45px]">{content.title}</h2>
+            <h2 className="mb-2.5 mt-5 text-[28px] font-bold leading-9 text-black sm:text-4xl sm:leading-[45px]">
+              {content.title}
+              <span className="sr-only"> de N7 Consulting, Junior-Entreprise de l’ENSEEIHT à Toulouse</span>
+            </h2>
             <p className="mt-2.5 max-w-[620px] text-lg leading-[28.8px] text-n7-slate">{content.intro}</p>
           </div>
           <SmartLink
