@@ -44,3 +44,4 @@ Les textes enrichis utilisent une mini-syntaxe interprétée par `RichText` : `*
 - **Images :** elles sont chargées depuis le CDN Webflow du site d’origine (`cdn.prod.website-files.com`). Pour s’en affranchir, télécharger les fichiers dans `public/` et mettre à jour les URLs dans `src/data/`.
 - **Formulaire de contact :** sans `endpoint` dans `src/data/pages.ts`, l’envoi ouvre le client mail du visiteur vers `contact@n7consulting.fr`. Pour un envoi direct, renseigner l’URL d’un service de formulaire (Formspree, Getform, API maison) dans `contactContent.endpoint`.
 - **Hébergement :** l’application utilise des routes côté client. Configurer l’hébergeur pour renvoyer `index.html` sur toutes les routes (règle de réécriture « SPA »).
+# N7Consulting.fr-SEO-GEO-
