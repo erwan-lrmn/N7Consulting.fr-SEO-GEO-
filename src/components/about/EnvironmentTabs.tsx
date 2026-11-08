@@ -8,28 +8,38 @@ interface EnvironmentTabsProps {
 
 export default function EnvironmentTabs({ content }: EnvironmentTabsProps) {
   const [activeId, setActiveId] = useState<string>(content.tabs[0]?.id ?? '');
-  const activeTab = content.tabs.find((tab) => tab.id === activeId) ?? content.tabs[0];
+
+  const activeIndex = Math.max(
+    0,
+    content.tabs.findIndex((tab) => tab.id === activeId),
+  );
+  const activeTab = content.tabs[activeIndex] ?? content.tabs[0];
 
   const handleKeyDown = (event: KeyboardEvent<HTMLDivElement>): void => {
     if (event.key !== 'ArrowRight' && event.key !== 'ArrowLeft') return;
-    const index = content.tabs.findIndex((tab) => tab.id === activeId);
+    event.preventDefault();
     const offset = event.key === 'ArrowRight' ? 1 : -1;
-    const next = content.tabs[(index + offset + content.tabs.length) % content.tabs.length];
+    const next = content.tabs[(activeIndex + offset + content.tabs.length) % content.tabs.length];
     if (next) setActiveId(next.id);
   };
 
   if (!activeTab) return null;
 
   return (
-    <section className="bg-white px-5 pb-[100px] pt-[70px]">
+    <section id="environnement" className="scroll-mt-24 bg-white px-5 pb-[100px] pt-[70px]">
       <div className="mx-auto max-w-[1140px]">
-        <h2 className="mb-[30px] mt-5 text-center text-[28px] font-bold leading-9 text-n7-graphite sm:text-4xl sm:leading-[45px]">{content.title}</h2>
+        <h2 className="mb-3 mt-5 text-center text-[28px] font-bold leading-9 text-n7-graphite sm:text-4xl sm:leading-[45px]">
+          {content.title}
+        </h2>
+        <p className="mx-auto mb-10 max-w-[680px] text-center text-lg leading-[28.8px] text-n7-steel">
+          Étudiants, alumni et école : les trois piliers qui font vivre la Junior-Entreprise.
+        </p>
 
         <div
           role="tablist"
           aria-label={content.title}
           onKeyDown={handleKeyDown}
-          className="mx-auto mb-12 flex max-w-[640px] gap-1 rounded-full border border-n7-navy bg-white p-1"
+          className="mx-auto mb-12 flex max-w-[680px] flex-wrap justify-center gap-2 rounded-full border border-n7-navy bg-white p-1"
         >
           {content.tabs.map((tab) => {
             const isActive = tab.id === activeTab.id;
@@ -43,8 +53,8 @@ export default function EnvironmentTabs({ content }: EnvironmentTabsProps) {
                 aria-controls={`panel-${tab.id}`}
                 tabIndex={isActive ? 0 : -1}
                 onClick={() => setActiveId(tab.id)}
-                className={`flex-1 rounded-full px-2.5 py-3 text-[13px] font-semibold leading-[18px] transition-all duration-300 sm:text-[15px] ${
-                  isActive ? 'bg-n7-navy text-white' : 'text-n7-navy hover:bg-n7-sky/30'
+                className={`flex-1 whitespace-nowrap rounded-full px-5 py-3 text-[13px] font-semibold leading-[18px] transition-all duration-300 sm:text-[15px] ${
+                  isActive ? 'bg-n7-navy text-white shadow-sm' : 'text-n7-navy hover:bg-n7-sky/30'
                 }`}
               >
                 {tab.label}
@@ -53,6 +63,7 @@ export default function EnvironmentTabs({ content }: EnvironmentTabsProps) {
           })}
         </div>
 
+        {/* Tous les panneaux restent dans le DOM (SEO), seul l'actif est affiché. */}
         {content.tabs.map((tab) => {
           const isActive = tab.id === activeTab.id;
           return (
@@ -61,18 +72,21 @@ export default function EnvironmentTabs({ content }: EnvironmentTabsProps) {
               role="tabpanel"
               id={`panel-${tab.id}`}
               aria-labelledby={`tab-${tab.id}`}
-              hidden={!isActive}
-              className="grid animate-fade-down grid-cols-1 items-center gap-10 lg:grid-cols-2 lg:gap-[140px]"
+              className={
+                isActive
+                  ? 'grid animate-fade-down grid-cols-1 items-center gap-10 lg:grid-cols-2 lg:gap-16'
+                  : 'hidden'
+              }
             >
               <div>
-                <h2 className="mb-6 text-[22px] font-semibold leading-[28.6px] text-black">{tab.title}</h2>
+                <h3 className="mb-6 text-[22px] font-semibold leading-[28.6px] text-black">{tab.title}</h3>
                 {tab.paragraphs.map((paragraph) => (
                   <p key={paragraph} className="mb-5 text-lg leading-[28.8px] text-black">
                     <RichText text={paragraph} />
                   </p>
                 ))}
                 {tab.list && (
-                  <ul className="mb-5 list-disc pl-10 text-lg leading-[28.8px] text-black">
+                  <ul className="mb-5 list-disc pl-6 text-lg leading-[28.8px] text-black">
                     {tab.list.map((item) => (
                       <li key={item}>
                         <RichText text={item} />
@@ -81,17 +95,19 @@ export default function EnvironmentTabs({ content }: EnvironmentTabsProps) {
                   </ul>
                 )}
                 {tab.closing && (
-                  <p className="mb-10 text-lg leading-[28.8px] text-black">
+                  <p className="text-lg leading-[28.8px] text-black">
                     <RichText text={tab.closing} />
                   </p>
                 )}
               </div>
-              <img
-                src={tab.image.src}
-                alt={tab.image.alt}
-                loading="lazy"
-                className="mx-auto max-h-[420px] w-full max-w-[500px] rounded-2xl object-contain"
-              />
+              <div className="flex items-center justify-center">
+                <img
+                  src={tab.image.src}
+                  alt={tab.image.alt}
+                  loading="lazy"
+                  className="mx-auto max-h-[420px] w-full max-w-[500px] rounded-2xl object-contain"
+                />
+              </div>
             </div>
           );
         })}
