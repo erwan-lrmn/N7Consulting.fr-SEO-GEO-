@@ -8,7 +8,7 @@ import VideoSection from '../components/home/VideoSection';
 import { latestArticles } from '../data/latestArticles';
 import { homeContent } from '../data/home';
 import { newsContent, pageTitles } from '../data/pages';
-import { offerGroups } from '../data/services';
+import { offerGroups } from '../data/offers';
 import { siteContent } from '../data/site';
 import { usePageTitle } from '../usePageTitle';
 

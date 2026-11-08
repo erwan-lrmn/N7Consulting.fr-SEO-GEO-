@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { ChevronDown } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import type { OfferGroup } from '../../data/services';
+import type { OfferGroup } from '../../data/offers';
 import type { ServiceTeaser } from '../../types';
 import Reveal from '../ui/Reveal';
 import RichText from '../ui/RichText';

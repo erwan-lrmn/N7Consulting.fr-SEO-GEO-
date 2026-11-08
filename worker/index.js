@@ -5,16 +5,32 @@ export default {
   async fetch(request, env) {
     const url = new URL(request.url);
 
-    // Un seul saut de redirection, même depuis http://www : HTTPS + apex en une fois.
-    if (url.hostname === `www.${CANONICAL_HOST}`) {
-      url.protocol = 'https:';
-      url.hostname = CANONICAL_HOST;
-      return Response.redirect(url.toString(), 301);
-    }
+    // Consolide hôte, protocole et chemin en UN seul 301 (www → apex, HTTP → HTTPS,
+    // /index.html → /, slash final retiré). Les crawlers ne voient jamais plus d'un saut.
+    let changed = false;
 
-    // Force HTTPS for every other hostname (workers.dev and the apex domain).
+    if (url.hostname === `www.${CANONICAL_HOST}`) {
+      url.hostname = CANONICAL_HOST;
+      changed = true;
+    }
     if (url.protocol === 'http:') {
       url.protocol = 'https:';
+      changed = true;
+    }
+
+    const path = url.pathname;
+    if (path === '/index.html') {
+      url.pathname = '/';
+      changed = true;
+    } else if (path !== '/' && path.endsWith('/')) {
+      url.pathname = path.slice(0, -1);
+      changed = true;
+    } else if (path.endsWith('.html')) {
+      url.pathname = path.slice(0, -'.html'.length);
+      changed = true;
+    }
+
+    if (changed) {
       return Response.redirect(url.toString(), 301);
     }
 
@@ -31,8 +47,7 @@ export default {
       return response;
     }
 
-    const path = url.pathname === '/' ? '/' : url.pathname.replace(/\/+$/, '');
-    const canonical = `${url.origin}${path}`;
+    const canonical = `${url.origin}${url.pathname}`;
     let body = await response.text();
 
     // The SPA fallback serves the same index.html for every route: set the canonical path server-side.

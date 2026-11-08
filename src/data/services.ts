@@ -1,4 +1,4 @@
-import type { ImageAsset, LinkItem, MethodContent, RichText, ServiceGroupBlock, ServicePageContent, ServiceSlug } from '../types';
+import type { LinkItem, MethodContent, ServicePageContent, ServiceSlug } from '../types';
 import { CDN, siteContent } from './site';
 
 const icon = (file: string, alt: string) => ({ src: `${CDN}/${file}`, alt });
@@ -288,40 +288,3 @@ export const servicePages: Record<ServiceSlug, ServicePageContent> = {
     ],
   },
 };
-
-export interface Offer {
-  title: string;
-  icon: ImageAsset;
-  points: RichText[];
-  href: string;
-}
-
-export interface OfferGroup {
-  title: string;
-  href: string;
-  offers: Offer[];
-}
-
-const CATEGORY_TITLES: Record<ServiceSlug, string> = {
-  'digital-data': 'Digital & Data',
-  'ingenierie-it': 'Ingénierie & IT',
-  'eco-ingenierie': 'Éco-Ingénierie',
-};
-
-/** Offres regroupées par thème (pôle de prestations). */
-export const offerGroups: OfferGroup[] = (
-  Object.entries(servicePages) as Array<[ServiceSlug, ServicePageContent]>
-).map(([slug, page]) => ({
-  title: CATEGORY_TITLES[slug],
-  href: `/${slug}`,
-  offers: page.blocks
-    .filter((block): block is ServiceGroupBlock => block.type === 'group')
-    .flatMap((block) =>
-      block.features.map((feature) => ({
-        title: feature.title,
-        icon: feature.icon,
-        points: feature.points,
-        href: `/${slug}`,
-      })),
-    ),
-}));
