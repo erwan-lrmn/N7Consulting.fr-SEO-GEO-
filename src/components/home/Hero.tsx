@@ -9,10 +9,13 @@ interface HeroProps {
 
 const brochureLink = { label: 'Télécharger la plaquette', href: siteContent.brochure.href };
 
-/** Photo d'illustration provisoire : vue de l'ENSEEIHT depuis le canal du Midi. */
-const HERO_BACKGROUND =
-  'https://wsrv.nl/?url=https%3A%2F%2Fwww.enseeiht.fr%2F_resource%2Fcharte%2Faccueil%2Fheader-bg.jpg&output=webp&w=1920&q=80';
+/** Photo d'illustration : vue de l'ENSEEIHT depuis le canal du Midi (fichiers locaux responsives). */
+const HERO_BACKGROUND = '/hero/enseeiht-1920.webp';
+const HERO_BACKGROUND_SRCSET =
+  '/hero/enseeiht-640.webp 640w, /hero/enseeiht-960.webp 960w, /hero/enseeiht-1280.webp 1280w, /hero/enseeiht-1920.webp 1920w';
 const HERO_BACKGROUND_CREDIT_URL = 'https://www.enseeiht.fr/';
+// Attribut HTML natif (React 18 ne gère pas encore la prop camelCase `fetchPriority`).
+const HERO_IMAGE_PRIORITY: Record<string, string> = { fetchpriority: 'high' };
 
 export default function Hero({ content }: HeroProps) {
   return (
@@ -20,7 +23,17 @@ export default function Hero({ content }: HeroProps) {
       id="accueil"
       className="relative flex min-h-[100svh] flex-col items-center justify-center overflow-hidden bg-white pb-[calc(16.5vw+200px)] pt-28 text-center"
     >
-      <div aria-hidden="true" className="absolute inset-0 scale-105 bg-cover bg-center blur-[2px]" style={{ backgroundImage: `url("${HERO_BACKGROUND}")` }} />
+      <img
+        src={HERO_BACKGROUND}
+        srcSet={HERO_BACKGROUND_SRCSET}
+        sizes="100vw"
+        width={1920}
+        height={1284}
+        alt="Vue de l’ENSEEIHT depuis le canal du Midi"
+        {...HERO_IMAGE_PRIORITY}
+        decoding="async"
+        className="absolute inset-0 h-full w-full scale-105 object-cover blur-[2px]"
+      />
 
       <div className="relative z-10 flex w-full flex-col items-center px-[6vw]">
         <img

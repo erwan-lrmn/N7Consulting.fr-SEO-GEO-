@@ -1,4 +1,4 @@
-import { renderToStaticMarkup } from 'react-dom/server';
+import { renderToString } from 'react-dom/server';
 import { Route, Routes } from 'react-router-dom';
 import { StaticRouter } from 'react-router-dom/server';
 import Layout from './components/layout/Layout';
@@ -51,6 +51,8 @@ export const prerenderRoutes: PrerenderRoute[] = [
   { path: '/mentions-legales', title: `${pageTitles.legal}${pageTitles.suffix}` },
 ];
 
+export const notFoundTitle = `${pageTitles.notFound}${pageTitles.suffix}`;
+
 /** Même arbre de routes que l'application, mais avec des imports statiques (pas de React.lazy). */
 function StaticRoutes() {
   return (
@@ -73,7 +75,7 @@ function StaticRoutes() {
 }
 
 export function render(path: string): string {
-  return renderToStaticMarkup(
+  return renderToString(
     <StaticRouter location={path}>
       <StaticRoutes />
     </StaticRouter>,

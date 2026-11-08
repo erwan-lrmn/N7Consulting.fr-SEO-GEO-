@@ -10,8 +10,9 @@ interface StatsSectionProps {
 }
 
 function useCountUp(target: number, start: boolean, durationMs = 1600): number {
-  // Au build SSG, on affiche directement la valeur finale dans le HTML statique.
-  const [value, setValue] = useState<number>(() => (typeof window === 'undefined' ? target : 0));
+  // Valeur finale au premier rendu (identique côté serveur et client) pour
+  // permettre l'hydratation sans décalage ; l'animation repart de 0 lorsqu'elle démarre.
+  const [value, setValue] = useState<number>(target);
 
   useEffect(() => {
     if (!start) return undefined;
@@ -19,6 +20,7 @@ function useCountUp(target: number, start: boolean, durationMs = 1600): number {
       setValue(target);
       return undefined;
     }
+    setValue(0);
     let frame = 0;
     const startedAt = performance.now();
     const tick = (now: number): void => {

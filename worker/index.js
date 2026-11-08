@@ -38,6 +38,11 @@ export default {
     headers.delete('content-encoding');
     headers.delete('etag');
 
+    // Le HTML doit toujours être revalidé pour publier les nouveaux builds.
+    if (contentType.includes('text/html')) {
+      headers.set('cache-control', 'public, max-age=0, must-revalidate');
+    }
+
     return new Response(body, {
       status: response.status,
       statusText: response.statusText,

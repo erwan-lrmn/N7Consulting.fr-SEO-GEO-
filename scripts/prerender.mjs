@@ -1,7 +1,7 @@
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { prerenderRoutes, render } from '../dist-ssr/entry-server.js';
+import { notFoundTitle, prerenderRoutes, render } from '../dist-ssr/entry-server.js';
 
 const distDir = fileURLToPath(new URL('../dist/', import.meta.url));
 const shellPath = join(distDir, 'index.html');
@@ -51,3 +51,12 @@ for (const route of prerenderRoutes) {
 }
 
 console.log(`${prerenderRoutes.length} pages pré-rendues.`);
+
+// Page 404 statique (Cloudflare la sert avec un vrai statut 404).
+const notFoundMarkup = render('/404');
+const notFoundHtml = shell
+  .replace(ROOT_PATTERN, () => `<div id="root">${notFoundMarkup}</div>`)
+  .replace(TITLE_PATTERN, () => `<title>${escapeHtml(notFoundTitle)}</title>`)
+  .replace(CANONICAL_PATTERN, () => '<meta name="robots" content="noindex" />');
+await writeFile(join(distDir, '404.html'), notFoundHtml, 'utf8');
+console.log('prerender: 404 -> dist/404.html');

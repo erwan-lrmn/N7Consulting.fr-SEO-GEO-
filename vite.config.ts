@@ -35,4 +35,9 @@ function inlineCss(): Plugin {
 
 export default defineConfig({
   plugins: [react(), inlineCss()],
+  build: {
+    // Navigateurs modernes uniquement : évite la transpilation/polyfills inutiles.
+    target: 'es2022',
+    modulePreload: { polyfill: false },
+  },
 });

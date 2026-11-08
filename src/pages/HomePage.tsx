@@ -5,7 +5,7 @@ import OffersSection from '../components/home/OffersSection';
 import StatsSection from '../components/home/StatsSection';
 import TrustSection from '../components/home/TrustSection';
 import VideoSection from '../components/home/VideoSection';
-import { articles } from '../data/articles';
+import { latestArticles } from '../data/latestArticles';
 import { homeContent } from '../data/home';
 import { newsContent, pageTitles } from '../data/pages';
 import { offerGroups } from '../data/services';
@@ -23,7 +23,7 @@ export default function HomePage() {
       <OffersSection title={homeContent.services.title} groups={offerGroups} categories={homeContent.services.items} />
       <TrustSection content={homeContent.trust} />
       <VideoSection content={homeContent.video} />
-      <LatestNews content={homeContent.latestNews} articles={articles} readMore={newsContent.readMore} />
+      <LatestNews content={homeContent.latestNews} articles={latestArticles} readMore={newsContent.readMore} />
       <CtaBanner content={siteContent.ctaBanner} arcColor="mist" />
     </>
   );

@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom';
-import type { Article } from '../../types';
+import type { ArticleCardData } from '../../types';
 
 interface ArticleCardProps {
-  article: Article;
+  article: ArticleCardData;
   readMore: string;
   headingLevel?: 'h2' | 'h3';
 }

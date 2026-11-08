@@ -30,6 +30,8 @@ function LogoMarquee({ logos }: { logos: BrandLogo[] }) {
                   <img
                     src={logo.src}
                     alt={logo.alt}
+                    width={logo.width}
+                    height={logo.height}
                     loading="lazy"
                     className="h-9 w-auto max-w-[180px] object-contain sm:h-10 sm:max-w-[200px]"
                   />
@@ -83,6 +85,8 @@ export default function TrustSection({ content }: TrustSectionProps) {
               <img
                 src={testimonial.photo.src}
                 alt={testimonial.photo.alt}
+                width={80}
+                height={80}
                 loading="lazy"
                 className="mx-auto h-20 w-20 rounded-full object-cover ring-4 ring-n7-mist"
               />

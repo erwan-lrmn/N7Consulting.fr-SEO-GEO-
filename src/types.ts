@@ -305,6 +305,9 @@ export interface Article {
   blocks: ArticleBlock[];
 }
 
+/** Champs nécessaires à une carte d'article (accueil / liste des actualités). */
+export type ArticleCardData = Pick<Article, 'slug' | 'category' | 'date' | 'title' | 'excerpt' | 'cover'>;
+
 export interface NewsContent {
   title: string;
   intro: string;

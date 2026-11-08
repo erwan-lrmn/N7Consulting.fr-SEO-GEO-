@@ -1,4 +1,4 @@
-import type { Article, LatestNewsContent } from '../../types';
+import type { ArticleCardData, LatestNewsContent } from '../../types';
 import ArticleCard from '../ui/ArticleCard';
 import Reveal from '../ui/Reveal';
 import SmartLink from '../ui/SmartLink';
@@ -6,7 +6,7 @@ import Wave from '../ui/Wave';
 
 interface LatestNewsProps {
   content: LatestNewsContent;
-  articles: Article[];
+  articles: ArticleCardData[];
   readMore: string;
 }
 

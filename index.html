@@ -41,36 +41,30 @@
         ]
       }
     </script>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="preconnect" href="https://wsrv.nl" />
     <script>
       if (location.pathname === '/' || location.pathname === '/index.html') {
+        var logoPreload = document.createElement('link');
+        logoPreload.rel = 'preload';
+        logoPreload.as = 'image';
+        logoPreload.fetchPriority = 'high';
+        logoPreload.href = '/logo-n7-consulting-white.svg';
+        document.head.appendChild(logoPreload);
+
         var heroPreload = document.createElement('link');
         heroPreload.rel = 'preload';
         heroPreload.as = 'image';
         heroPreload.fetchPriority = 'high';
-        heroPreload.href =
-          'https://wsrv.nl/?url=https%3A%2F%2Fwww.enseeiht.fr%2F_resource%2Fcharte%2Faccueil%2Fheader-bg.jpg&output=webp&w=1920&q=80';
+        heroPreload.href = '/hero/enseeiht-1280.webp';
+        heroPreload.setAttribute(
+          'imagesrcset',
+          '/hero/enseeiht-640.webp 640w, /hero/enseeiht-960.webp 960w, /hero/enseeiht-1280.webp 1280w, /hero/enseeiht-1920.webp 1920w',
+        );
+        heroPreload.setAttribute('imagesizes', '100vw');
         document.head.appendChild(heroPreload);
       }
     </script>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&family=Libre+Baskerville:wght@400;700&family=Montserrat:wght@400;500;600;700&display=swap"
-      rel="preload"
-      as="style"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&family=Libre+Baskerville:wght@400;700&family=Montserrat:wght@400;500;600;700&display=swap"
-      rel="stylesheet"
-      media="print"
-      onload="this.media='all'"
-    />
     <noscript>
-      <link
-        href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&family=Libre+Baskerville:wght@400;700&family=Montserrat:wght@400;500;600;700&display=swap"
-        rel="stylesheet"
-      />
       <style>
         [data-reveal] {
           opacity: 1 !important;

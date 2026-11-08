@@ -19,7 +19,7 @@ export default function Footer({ site }: FooterProps) {
             ariaLabel={`${site.name} – Accueil`}
             className="shrink-0 transition-opacity duration-300 hover:opacity-80"
           >
-            <img src={site.logo.src} alt={site.logo.alt} loading="lazy" className="h-[110px] w-auto lg:h-[127px]" />
+            <img src={site.logo.src} alt={site.logo.alt} width={1124} height={1062} loading="lazy" className="h-[110px] w-auto lg:h-[127px]" />
           </SmartLink>
 
           <ul className="flex flex-col items-center lg:flex-row">
@@ -77,7 +77,7 @@ export default function Footer({ site }: FooterProps) {
             {site.socials.map((social) => (
               <li key={social.href}>
                 <SmartLink href={social.href} ariaLabel={social.label} className="block transition-transform duration-300 hover:scale-110">
-                  <img src={social.icon.src} alt={social.icon.alt} loading="lazy" className="h-10 w-10" />
+                  <img src={social.icon.src} alt={social.icon.alt} width={40} height={40} loading="lazy" className="h-10 w-10" />
                 </SmartLink>
               </li>
             ))}
