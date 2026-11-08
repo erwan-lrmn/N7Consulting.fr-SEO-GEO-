@@ -52,7 +52,10 @@ export default function TeamSlider({ content }: TeamSliderProps) {
     const track = trackRef.current;
     const cards = track?.querySelectorAll<HTMLElement>('[data-team-card]');
     if (!track || !cards || cards.length <= content.members.length) return 0;
-    return cards[content.members.length].offsetLeft - cards[0].offsetLeft;
+    const firstCard = cards[0];
+    const middleCard = cards[content.members.length];
+    if (!firstCard || !middleCard) return 0;
+    return middleCard.offsetLeft - firstCard.offsetLeft;
   };
 
   const centerTrack = (): void => {

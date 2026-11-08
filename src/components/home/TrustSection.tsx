@@ -45,7 +45,7 @@ function LogoMarquee({ logos }: { logos: BrandLogo[] }) {
 
 export default function TrustSection({ content }: TrustSectionProps) {
   const [activeTestimonial, setActiveTestimonial] = useState<number>(0);
-  const testimonial = content.testimonials[activeTestimonial];
+  const testimonial = content.testimonials[activeTestimonial] ?? content.testimonials[0];
   const logos = [...content.logoRows[0], ...content.logoRows[1]];
   const titleWords = content.title.split(' ');
   const lastWord = titleWords.pop() ?? '';
@@ -69,6 +69,8 @@ export default function TrustSection({ content }: TrustSectionProps) {
     node.addEventListener('wheel', handleWheel, { passive: false });
     return () => node.removeEventListener('wheel', handleWheel);
   }, [testimonialCount]);
+
+  if (!testimonial) return null;
 
   return (
     <section id="temoignages" className="relative bg-n7-navy px-5 pb-[76px] pt-[76px] text-white sm:px-[5%]">
