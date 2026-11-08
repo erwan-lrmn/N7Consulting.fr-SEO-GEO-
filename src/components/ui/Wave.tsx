@@ -30,7 +30,7 @@ export default function Wave({ variant, color = 'white', className = '' }: WaveP
 
   if (variant === 'navyAbove') {
     return (
-      <div aria-hidden="true" className={`pointer-events-none absolute inset-x-0 bottom-full z-[2] h-[58px] overflow-hidden ${className}`}>
+      <div aria-hidden="true" className={`pointer-events-none absolute inset-x-0 bottom-[calc(100%-2px)] z-[2] h-[58px] overflow-hidden ${className}`}>
         <svg viewBox="0 0 1512 65" className="absolute bottom-[-1px] left-1/2 h-auto w-[105%] -translate-x-1/2" preserveAspectRatio="none">
           <path
             fill="#142F4D"

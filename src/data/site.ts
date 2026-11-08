@@ -29,7 +29,14 @@ export const siteContent: SiteContent = {
         { label: 'Éco-ingénierie', footerLabel: '🍃 Éco-ingénierie', href: '/eco-ingenierie' },
       ],
     },
-    { label: 'Qui sommes-nous ?', href: '/qui-sommes-nous' },
+    {
+      label: 'Qui sommes-nous ?',
+      href: '/qui-sommes-nous',
+      children: [
+        { label: 'Notre structure', footerLabel: 'Notre structure', href: '/qui-sommes-nous#structure' },
+        { label: 'Notre histoire', footerLabel: 'Notre histoire', href: '/qui-sommes-nous#histoire' },
+      ],
+    },
     { label: 'Actualités', href: '/actualites' },
   ],
   contactCta: { label: 'Nous contacter', href: '/contact' },

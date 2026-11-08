@@ -98,7 +98,7 @@ export default function Timeline({ content }: TimelineProps) {
   }, []);
 
   return (
-    <section className="bg-n7-navy px-5">
+    <section id="histoire" className="scroll-mt-24 bg-n7-navy px-5">
       <div className="py-[100px] text-center lg:pb-[150px] lg:pt-[140px]">
         <h2 className="mb-2.5 mt-5 text-[28px] font-bold leading-9 text-white sm:text-4xl sm:leading-[45px]">{content.title}</h2>
       </div>

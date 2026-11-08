@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
 import { siteContent } from '../../data/site';
 import Footer from './Footer';
-import Navbar from './Navbar';
+import Header from './Header';
 
 function ScrollManager() {
   const { pathname, hash } = useLocation();
@@ -25,7 +25,7 @@ export default function Layout() {
   return (
     <>
       <ScrollManager />
-      <Navbar site={siteContent} />
+      <Header />
       <main>
         <Outlet />
       </main>

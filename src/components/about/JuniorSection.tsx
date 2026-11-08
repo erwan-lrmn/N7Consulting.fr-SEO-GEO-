@@ -10,7 +10,8 @@ interface JuniorSectionProps {
 
 export default function JuniorSection({ content }: JuniorSectionProps) {
   return (
-    <section className="relative bg-n7-navy px-5 py-20 text-white sm:px-[30px]">
+    <section id="structure" className="relative scroll-mt-24 bg-n7-navy px-5 py-20 text-white sm:px-[30px]">
+      <Wave variant="navyAbove" />
       <div className="mx-auto max-w-[1173px]">
         <h2 className="mb-4 mt-5 text-center text-[28px] font-bold leading-9 sm:text-4xl sm:leading-[45px]">{content.title}</h2>
         <p className="mx-auto mb-5 max-w-[700px] text-center text-lg leading-[29px] sm:text-xl sm:leading-[31px]">{content.text}</p>

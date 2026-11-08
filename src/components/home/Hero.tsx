@@ -1,77 +1,68 @@
-import { Fragment } from 'react';
-import type { HeroContent, ImageAsset } from '../../types';
-import { assets } from '../../data/site';
+import type { HeroContent } from '../../types';
+import { aboutContent } from '../../data/about';
+import { siteContent } from '../../data/site';
 import Button from '../ui/Button';
 
 interface HeroProps {
   content: HeroContent;
 }
 
-interface GalleryColumnProps {
-  images: ImageAsset[];
-  direction: 'up' | 'down';
-}
+const brochureLink = { label: 'Télécharger la plaquette', href: siteContent.brochure.href };
 
-function GalleryColumn({ images, direction }: GalleryColumnProps) {
-  const animation = direction === 'up' ? 'motion-safe:animate-marquee-up' : 'motion-safe:animate-marquee-down';
-  const copies: Array<{ key: string; hidden: boolean }> = [
-    { key: 'a', hidden: false },
-    { key: 'b', hidden: true },
-  ];
-
-  return (
-    <div className="relative h-full overflow-hidden">
-      <div className={`flex flex-col ${animation} hover:[animation-play-state:paused]`}>
-        {copies.map((copy) => (
-          <ul key={copy.key} aria-hidden={copy.hidden} className="flex flex-col gap-4 pb-4">
-            {images.map((image) => (
-              <li key={`${copy.key}-${image.src}`} className="group relative aspect-[316/379] overflow-hidden rounded-[10px] bg-n7-sky/30">
-                <img
-                  src={image.src}
-                  alt={copy.hidden ? '' : image.alt}
-                  className="absolute inset-0 h-full w-full rounded-[10px] object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-                />
-              </li>
-            ))}
-          </ul>
-        ))}
-      </div>
-    </div>
-  );
-}
+/** Photo d'illustration provisoire : vue de l'ENSEEIHT depuis le canal du Midi. */
+const HERO_BACKGROUND = 'https://www.enseeiht.fr/_resource/charte/accueil/header-bg.jpg';
+const HERO_BACKGROUND_CREDIT_URL = 'https://www.enseeiht.fr/';
 
 export default function Hero({ content }: HeroProps) {
-  const [leftColumn, rightColumn] = content.galleryColumns;
-
   return (
     <section
       id="accueil"
-      className="relative overflow-hidden bg-cover bg-top lg:min-h-screen"
-      style={{ backgroundImage: `linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), url("${assets.flagPhoto}")` }}
+      className="relative flex min-h-[100svh] flex-col items-center justify-center overflow-hidden bg-white pb-[calc(16.5vw+200px)] pt-28 text-center"
     >
-      <div className="grid grid-cols-1 items-center lg:grid-cols-2">
-        <div className="mx-[6vw] max-w-[35rem] pb-[calc(16.5vw+32px)] pt-[110px] sm:mx-[5vw] lg:ml-[calc(5vw+8px)] lg:mr-20 lg:pb-[calc(16.5vw+48px)] lg:pt-[120px]">
-          <h1 className="mb-2.5 mt-5 font-serif text-[36px] font-bold leading-[43px] text-black sm:text-5xl sm:leading-[57.6px]">
-            {content.title}
-          </h1>
-          <p className="text-lg leading-[28.8px] text-black">
-            {content.descriptionLines.map((line, index) => (
-              <Fragment key={line}>
-                {index > 0 && <br />}
-                {line}
-              </Fragment>
-            ))}
-          </p>
-          <div className="mt-10">
-            <Button link={content.cta} />
-          </div>
-        </div>
+      <div aria-hidden="true" className="absolute inset-0 scale-105 bg-cover bg-center blur-[2px]" style={{ backgroundImage: `url("${HERO_BACKGROUND}")` }} />
 
-        <div className="relative z-[1] hidden h-screen min-h-[640px] grid-cols-2 gap-4 pr-[5vw] lg:grid">
-          <GalleryColumn images={leftColumn} direction="up" />
-          <GalleryColumn images={rightColumn} direction="down" />
+      <div className="relative z-10 flex w-full flex-col items-center px-[6vw]">
+        <img
+          id="hero-logo"
+          src="/logo-n7-consulting-white.svg"
+          alt="N7 Consulting, la Junior-Entreprise de l’ENSEEIHT"
+          className="h-auto max-h-[50svh] w-auto max-w-[86vw]"
+        />
+        <h1 className="sr-only">{content.title}</h1>
+        <ul className="mt-[105px] flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-[11px] font-semibold uppercase tracking-[0.14em] text-white drop-shadow-[0_1px_3px_rgba(0,0,0,0.55)] sm:gap-x-6 sm:text-sm">
+          {aboutContent.values.items.map((value, index) => (
+            <li key={value} className="flex items-center gap-3 sm:gap-4">
+              <span>{value}</span>
+              {index < aboutContent.values.items.length - 1 && (
+                <span aria-hidden="true" className="text-n7-gold">
+                  •
+                </span>
+              )}
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div className="relative z-10 mt-[165px] flex w-full flex-col items-center gap-4 px-6 md:flex-row md:justify-center md:gap-6 xl:grid xl:grid-cols-3 xl:gap-0 xl:px-0">
+        <div className="flex justify-center xl:col-start-1">
+          <Button link={content.cta} variant="heroLarge" rounded={false} />
+        </div>
+        <div className="flex justify-center xl:col-start-3">
+          <Button link={brochureLink} variant="brochureLarge" rounded={false} />
         </div>
       </div>
+
+      <p className="absolute bottom-[calc(16.5vw+16px)] left-5 z-10 text-left text-[11px] leading-4 text-n7-steel">
+        Photo :{' '}
+        <a
+          href={HERO_BACKGROUND_CREDIT_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="underline decoration-dotted underline-offset-2 transition-colors duration-300 hover:text-n7-navy"
+        >
+          Toulouse INP-ENSEEIHT
+        </a>
+      </p>
     </section>
   );
 }

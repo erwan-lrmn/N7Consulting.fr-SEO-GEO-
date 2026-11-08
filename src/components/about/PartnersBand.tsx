@@ -1,5 +1,6 @@
 import type { BrandLogo } from '../../types';
 import SmartLink from '../ui/SmartLink';
+import Wave from '../ui/Wave';
 
 interface PartnersBandProps {
   title: string;
@@ -8,7 +9,8 @@ interface PartnersBandProps {
 
 export default function PartnersBand({ title, partners }: PartnersBandProps) {
   return (
-    <section className="-mb-0.5 bg-n7-navy px-5 pb-[60px] pt-10 text-white">
+    <section className="relative -mb-0.5 bg-n7-navy px-5 pb-[60px] pt-10 text-white">
+      <Wave variant="navyAbove" />
       <div className="mx-auto max-w-[85%]">
         <h2 className="mb-2.5 mt-5 text-center text-[28px] font-bold leading-[45px] sm:text-4xl sm:leading-[45px]">{title}</h2>
         <ul className="mt-10 flex flex-wrap items-center justify-center gap-8 lg:flex-nowrap lg:justify-between">

@@ -1,5 +1,4 @@
 import type { AboutContent } from '../../types';
-import Button from '../ui/Button';
 import RichText from '../ui/RichText';
 
 interface AboutHeroProps {
@@ -7,6 +6,7 @@ interface AboutHeroProps {
 }
 
 export default function AboutHero({ hero }: AboutHeroProps) {
+  // Bouton CTA retiré à la demande.
   return (
     <section
       className="flex min-h-[640px] items-start bg-cover bg-center px-5 pb-[140px] pt-[140px] sm:px-[30px] lg:min-h-[820px]"
@@ -17,7 +17,6 @@ export default function AboutHero({ hero }: AboutHeroProps) {
         <p className="mb-12 text-lg leading-[28px] sm:text-xl sm:leading-[31px]">
           <RichText text={hero.text} />
         </p>
-        <Button link={hero.cta} />
       </div>
     </section>
   );

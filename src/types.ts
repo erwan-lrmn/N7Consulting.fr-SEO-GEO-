@@ -97,11 +97,16 @@ export interface TrustContent {
   testimonials: Testimonial[];
 }
 
-export interface VideoContent {
+export interface VideoItem {
   title: string;
   href: string;
   thumbnail: string;
-  badge: ImageAsset;
+  publisherLogo: ImageAsset;
+}
+
+export interface VideoContent {
+  sectionTitle: string;
+  videos: VideoItem[];
 }
 
 export interface LatestNewsContent {
