@@ -17,7 +17,7 @@ export default {
     }
 
     const contentType = response.headers.get('content-type') ?? '';
-    const isRewritable = contentType.includes('text/html') || contentType.includes('xml') || contentType.includes('text/plain');
+    const isRewritable = contentType.includes('text/html') || contentType.includes('xml') || contentType.includes('text/plain') || contentType.includes('text/markdown');
 
     if (!isRewritable) {
       return response;

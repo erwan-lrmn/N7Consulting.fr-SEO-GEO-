@@ -1,7 +1,8 @@
-import { useLayoutEffect, useRef } from 'react';
+import { useRef } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import type { AboutContent, TeamMember } from '../../types';
 import { assets } from '../../data/site';
+import { useIsomorphicLayoutEffect } from '../../useIsomorphicLayoutEffect';
 
 interface TeamSliderProps {
   content: AboutContent['team'];
@@ -70,7 +71,7 @@ export default function TeamSlider({ content }: TeamSliderProps) {
     if (setWidth > 0) track.scrollLeft = setWidth - shift;
   };
 
-  useLayoutEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     centerTrack();
     const handleResize = (): void => centerTrack();
     window.addEventListener('resize', handleResize);

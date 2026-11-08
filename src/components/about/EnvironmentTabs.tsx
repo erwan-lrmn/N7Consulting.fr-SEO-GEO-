@@ -53,42 +53,48 @@ export default function EnvironmentTabs({ content }: EnvironmentTabsProps) {
           })}
         </div>
 
-        <div
-          key={activeTab.id}
-          role="tabpanel"
-          id={`panel-${activeTab.id}`}
-          aria-labelledby={`tab-${activeTab.id}`}
-          className="grid animate-fade-down grid-cols-1 items-center gap-10 lg:grid-cols-2 lg:gap-[140px]"
-        >
-          <div>
-            <h2 className="mb-6 text-[22px] font-semibold leading-[28.6px] text-black">{activeTab.title}</h2>
-            {activeTab.paragraphs.map((paragraph) => (
-              <p key={paragraph} className="mb-5 text-lg leading-[28.8px] text-black">
-                <RichText text={paragraph} />
-              </p>
-            ))}
-            {activeTab.list && (
-              <ul className="mb-5 list-disc pl-10 text-lg leading-[28.8px] text-black">
-                {activeTab.list.map((item) => (
-                  <li key={item}>
-                    <RichText text={item} />
-                  </li>
+        {content.tabs.map((tab) => {
+          const isActive = tab.id === activeTab.id;
+          return (
+            <div
+              key={tab.id}
+              role="tabpanel"
+              id={`panel-${tab.id}`}
+              aria-labelledby={`tab-${tab.id}`}
+              hidden={!isActive}
+              className="grid animate-fade-down grid-cols-1 items-center gap-10 lg:grid-cols-2 lg:gap-[140px]"
+            >
+              <div>
+                <h2 className="mb-6 text-[22px] font-semibold leading-[28.6px] text-black">{tab.title}</h2>
+                {tab.paragraphs.map((paragraph) => (
+                  <p key={paragraph} className="mb-5 text-lg leading-[28.8px] text-black">
+                    <RichText text={paragraph} />
+                  </p>
                 ))}
-              </ul>
-            )}
-            {activeTab.closing && (
-              <p className="mb-10 text-lg leading-[28.8px] text-black">
-                <RichText text={activeTab.closing} />
-              </p>
-            )}
-          </div>
-          <img
-            src={activeTab.image.src}
-            alt={activeTab.image.alt}
-            loading="lazy"
-            className="mx-auto max-h-[420px] w-full max-w-[500px] rounded-2xl object-contain"
-          />
-        </div>
+                {tab.list && (
+                  <ul className="mb-5 list-disc pl-10 text-lg leading-[28.8px] text-black">
+                    {tab.list.map((item) => (
+                      <li key={item}>
+                        <RichText text={item} />
+                      </li>
+                    ))}
+                  </ul>
+                )}
+                {tab.closing && (
+                  <p className="mb-10 text-lg leading-[28.8px] text-black">
+                    <RichText text={tab.closing} />
+                  </p>
+                )}
+              </div>
+              <img
+                src={tab.image.src}
+                alt={tab.image.alt}
+                loading="lazy"
+                className="mx-auto max-h-[420px] w-full max-w-[500px] rounded-2xl object-contain"
+              />
+            </div>
+          );
+        })}
       </div>
     </section>
   );

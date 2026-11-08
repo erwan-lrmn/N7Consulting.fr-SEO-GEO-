@@ -10,7 +10,8 @@ interface StatsSectionProps {
 }
 
 function useCountUp(target: number, start: boolean, durationMs = 1600): number {
-  const [value, setValue] = useState<number>(0);
+  // Au build SSG, on affiche directement la valeur finale dans le HTML statique.
+  const [value, setValue] = useState<number>(() => (typeof window === 'undefined' ? target : 0));
 
   useEffect(() => {
     if (!start) return undefined;

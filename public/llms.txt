@@ -1,0 +1,27 @@
+# N7 Consulting
+
+> N7 Consulting est la Junior-Entreprise de l'ENSEEIHT (Toulouse INP) à Toulouse. Depuis 1977, elle met les compétences de ses étudiants ingénieurs au service des entreprises en digital et data, ingénierie et éco-ingénierie.
+
+## Informations clés
+
+- Nom : N7 Consulting
+- Statut : Junior-Entreprise de l'ENSEEIHT
+- Adresse : 2 Rue Charles Camichel, 31000 Toulouse, France
+- Email : contact@n7consulting.fr
+- Domaines : digital & data, ingénierie & IT, éco-ingénierie
+- Public : entreprises, start-ups, PME, grands groupes et institutions
+
+## Pages principales
+
+- [Accueil](https://n7consulting.erwan-2b1.workers.dev/) : présentation de N7 Consulting, de ses offres et de ses références.
+- [Nos prestations](https://n7consulting.erwan-2b1.workers.dev/nos-prestations) : vue d'ensemble des trois domaines d'expertise.
+- [Digital & Data](https://n7consulting.erwan-2b1.workers.dev/digital-data) : sites web, applications web et mobiles, data et intelligence artificielle.
+- [Ingénierie & IT](https://n7consulting.erwan-2b1.workers.dev/ingenierie-it) : études techniques, électronique, mécanique et systèmes informatiques.
+- [Éco-ingénierie](https://n7consulting.erwan-2b1.workers.dev/eco-ingenierie) : énergies renouvelables, efficacité énergétique et ingénierie durable.
+- [Qui sommes-nous](https://n7consulting.erwan-2b1.workers.dev/qui-sommes-nous) : mission, équipe, environnement et histoire de N7 Consulting.
+- [Actualités](https://n7consulting.erwan-2b1.workers.dev/actualites) : études de cas, événements et guides pratiques.
+- [Contact](https://n7consulting.erwan-2b1.workers.dev/contact) : demande de devis et prise de contact.
+
+## À propos des Junior-Entreprises
+
+Une Junior-Entreprise est une association gérée par des étudiants d'une grande école. Elle réalise des études et des prestations pour des entreprises, encadrées par des professionnels et auditées selon des normes de qualité.
