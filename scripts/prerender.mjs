@@ -19,6 +19,18 @@ const ROOT_PATTERN = /<div\s+id=["']?root["']?[^>]*>\s*<\/div>/;
 const CANONICAL_PATTERN = /<link rel="canonical" href="[^"]*"\s*\/?>/;
 const TITLE_PATTERN = /<title>.*?<\/title>/s;
 const DESCRIPTION_PATTERN = /<meta\s+name="description"\s+content="[^"]*"\s*\/?>/;
+const OG_TYPE_PATTERN = /<meta property="og:type" content="[^"]*"\s*\/?>/;
+const OG_TITLE_PATTERN = /<meta property="og:title" content="[^"]*"\s*\/?>/;
+const OG_DESCRIPTION_PATTERN = /<meta\s+property="og:description"\s+content="[^"]*"\s*\/?>/;
+const OG_URL_PATTERN = /<meta property="og:url" content="[^"]*"\s*\/?>/;
+const OG_IMAGE_PATTERN = /<meta property="og:image" content="[^"]*"\s*\/?>/;
+const OG_IMAGE_ALT_PATTERN = /<meta property="og:image:alt" content="[^"]*"\s*\/?>/;
+const TW_TITLE_PATTERN = /<meta name="twitter:title" content="[^"]*"\s*\/?>/;
+const TW_DESCRIPTION_PATTERN = /<meta\s+name="twitter:description"\s+content="[^"]*"\s*\/?>/;
+const TW_IMAGE_PATTERN = /<meta name="twitter:image" content="[^"]*"\s*\/?>/;
+const TW_IMAGE_ALT_PATTERN = /<meta name="twitter:image:alt" content="[^"]*"\s*\/?>/;
+const DEFAULT_OG_IMAGE = `${SITE_URL}/og/n7-consulting.jpg`;
+const DEFAULT_OG_IMAGE_ALT = 'N7 Consulting, Junior-Entreprise de l’ENSEEIHT à Toulouse';
 
 if (!ROOT_PATTERN.test(shell)) {
   throw new Error('Impossible de trouver <div id="root"></div> dans dist/index.html');
@@ -31,10 +43,26 @@ for (const route of prerenderRoutes) {
   }
 
   const canonical = `${SITE_URL}${route.path}`;
+  const pageUrl = `${SITE_URL}${route.path}`;
+  const imageUrl = route.image ?? DEFAULT_OG_IMAGE;
+  const imageAlt = route.imageAlt ?? DEFAULT_OG_IMAGE_ALT;
+  const description = route.description ?? route.title;
+  const ogType = route.type ?? 'website';
+
   let html = shell
     .replace(ROOT_PATTERN, () => `<div id="root">${markup}</div>`)
     .replace(TITLE_PATTERN, () => `<title>${escapeHtml(route.title)}</title>`)
-    .replace(CANONICAL_PATTERN, () => `<link rel="canonical" href="${canonical}" />`);
+    .replace(CANONICAL_PATTERN, () => `<link rel="canonical" href="${canonical}" />`)
+    .replace(OG_TYPE_PATTERN, () => `<meta property="og:type" content="${ogType}" />`)
+    .replace(OG_TITLE_PATTERN, () => `<meta property="og:title" content="${escapeHtml(route.title)}" />`)
+    .replace(OG_DESCRIPTION_PATTERN, () => `<meta property="og:description" content="${escapeHtml(description)}" />`)
+    .replace(OG_URL_PATTERN, () => `<meta property="og:url" content="${escapeHtml(pageUrl)}" />`)
+    .replace(OG_IMAGE_PATTERN, () => `<meta property="og:image" content="${escapeHtml(imageUrl)}" />`)
+    .replace(OG_IMAGE_ALT_PATTERN, () => `<meta property="og:image:alt" content="${escapeHtml(imageAlt)}" />`)
+    .replace(TW_TITLE_PATTERN, () => `<meta name="twitter:title" content="${escapeHtml(route.title)}" />`)
+    .replace(TW_DESCRIPTION_PATTERN, () => `<meta name="twitter:description" content="${escapeHtml(description)}" />`)
+    .replace(TW_IMAGE_PATTERN, () => `<meta name="twitter:image" content="${escapeHtml(imageUrl)}" />`)
+    .replace(TW_IMAGE_ALT_PATTERN, () => `<meta name="twitter:image:alt" content="${escapeHtml(imageAlt)}" />`);
 
   if (route.description) {
     html = html.replace(

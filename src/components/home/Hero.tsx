@@ -36,14 +36,16 @@ export default function Hero({ content }: HeroProps) {
       />
 
       <div className="relative z-10 flex w-full flex-col items-center px-[6vw]">
-        <img
-          id="hero-logo"
-          src="/logo-n7-consulting-white.svg"
-          alt="N7 Consulting, la Junior-Entreprise de l’ENSEEIHT"
-          width={1124}
-          height={1062}
-          className="h-auto max-h-[50svh] w-auto max-w-[86vw]"
-        />
+        <div className="flex h-[min(50svh,81.25vw)] w-full items-center justify-center">
+          <img
+            id="hero-logo"
+            src="/logo-n7-consulting-white.svg"
+            alt="N7 Consulting, la Junior-Entreprise de l’ENSEEIHT"
+            width={1124}
+            height={1062}
+            className="h-auto max-h-full w-auto max-w-[86vw]"
+          />
+        </div>
         <h1 className="sr-only">{content.title}</h1>
         <ul className="mt-[105px] flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-[11px] font-semibold uppercase tracking-[0.14em] text-white drop-shadow-[0_1px_3px_rgba(0,0,0,0.55)] sm:gap-x-6 sm:text-sm">
           {aboutContent.values.items.map((value, index) => (

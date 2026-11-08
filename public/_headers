@@ -4,6 +4,9 @@
 /hero/*
   Cache-Control: public, max-age=2592000
 
+/og/*
+  Cache-Control: public, max-age=2592000
+
 /logo-n7-consulting.svg
   Cache-Control: public, max-age=604800
 
