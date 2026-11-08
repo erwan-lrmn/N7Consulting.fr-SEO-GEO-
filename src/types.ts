@@ -300,6 +300,8 @@ export interface Article {
   date: string;
   updated: string;
   title: string;
+  /** Titre court utilisé dans la balise <title> (≤ 60 caractères). */
+  seoTitle: string;
   excerpt: string;
   cover: ImageAsset;
   blocks: ArticleBlock[];

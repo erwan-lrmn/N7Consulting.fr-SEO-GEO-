@@ -68,7 +68,7 @@ export const prerenderRoutes: PrerenderRoute[] = [
   },
   ...articles.map((article) => ({
     path: `/actualites/${article.slug}`,
-    title: `${article.title}${pageTitles.suffix}`,
+    title: article.seoTitle,
     description: article.excerpt,
     type: 'article' as const,
     image: article.cover.src,

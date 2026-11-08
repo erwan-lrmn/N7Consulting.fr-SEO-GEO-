@@ -11,7 +11,7 @@ import NotFoundPage from './NotFoundPage';
 
 function ArticleView({ slug }: { slug: string }) {
   const article = findArticle(slug);
-  usePageTitle(article ? article.title : '');
+  usePageTitle(article ? article.seoTitle : '', true);
 
   if (!article) return <NotFoundPage />;
 
