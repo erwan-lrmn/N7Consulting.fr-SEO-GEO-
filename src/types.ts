@@ -302,6 +302,8 @@ export interface Article {
   title: string;
   /** Titre court utilisé dans la balise <title> (≤ 60 caractères). */
   seoTitle: string;
+  /** Meta description dédiée (150–160 caractères). */
+  seoDescription: string;
   excerpt: string;
   cover: ImageAsset;
   blocks: ArticleBlock[];

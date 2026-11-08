@@ -9,6 +9,7 @@ export const articles: Article[] = [
     "updated": "20/10/26",
     "title": "Hackathon IA for Impact 2026 : N7 Consulting partenaire technique",
     "seoTitle": "Hackathon IA for Impact 2026 | N7 Consulting",
+    "seoDescription": "Les 9 et 10 octobre 2026, N7 Consulting était partenaire technique du Hackathon IA for Impact de La Mêlée Numérique, aux côtés d’ANITI et IBM et membre du jury.",
     "excerpt": "Les 9 et 10 octobre 2026, l'ENSEEIHT accueillait le Hackathon IA for Impact de La Mêlée Numérique. N7 Consulting y était partenaire technique, membre du jury et formateur aux côtés de nombreux acteurs tels que ANITI et IBM.",
     "cover": {
       "src": "https://cdn.prod.website-files.com/680f9779a28582b229e3585f/6ad7422f875b1d0d9ffaceae_6ad741ea6fa6c2c12eb33fb4_DSC06851-Avec-accentuation-Bruit-Grande.jpeg",
@@ -149,6 +150,7 @@ export const articles: Article[] = [
     "updated": "21/10/26",
     "title": "Étude de cas Vinci Facilities : une application mobile de podcasts pour la communication interne",
     "seoTitle": "Vinci Facilities : podcasts internes | N7 Consulting",
+    "seoDescription": "Pour Vinci Facilities, N7 Consulting a développé une application mobile de podcasts pour la communication interne, avec commande vocale et mesure de l’écoute.",
     "excerpt": "Pour Vinci Facilities, N7 Consulting a développé une application mobile de podcasts destinée à renforcer la communication interne, avec commande vocale et mesure du taux d'écoute.",
     "cover": {
       "src": "https://cdn.prod.website-files.com/680f9779a28582b229e3585f/6ad8bd1c0b1cb572f04dc43f_6ad8bcdd1563b3a5437cb938_Vinci-Energies-customer-story-logo-1920x1080.webp",
@@ -217,6 +219,7 @@ export const articles: Article[] = [
     "updated": "20/10/26",
     "title": "Mandat 49 : N7 Consulting prépare le mandat 50 et ses 50 ans",
     "seoTitle": "Mandat 49 : N7 Consulting prépare ses 50 ans",
+    "seoDescription": "Recrutement, formation et passation : le mandat 49 de N7 Consulting prépare le mandat 50, qui fêtera les 50 ans de la Junior-Entreprise. Restez connectés.",
     "excerpt": "Recrutement, formation et passation, audits ISO 9001 et CNJE : le mandat 49 prépare l'arrivée du mandat 50, qui fêtera les 50 ans de N7 Consulting. Restez connectés.",
     "cover": {
       "src": "https://cdn.prod.website-files.com/680f9779a28582b229e3585f/6ad75c8afa4efc3d1ef7d680_6a205143a27654696a6c68c4_photo_quais-30%2520(1).webp",
@@ -288,6 +291,7 @@ export const articles: Article[] = [
     "updated": "21/10/26",
     "title": "Comment faire appel à une Junior-Entreprise ? Le guide étape par étape",
     "seoTitle": "Junior-Entreprise : comment faire appel ? | N7 Consulting",
+    "seoDescription": "Qu’est-ce qu’une Junior-Entreprise, quels projets lui confier et comment se déroule une étude, du premier échange à la livraison ? Le guide pour entreprises.",
     "excerpt": "Qu'est-ce qu'une Junior-Entreprise, quels projets lui confier et comment se déroule une étude, du premier échange à la livraison : le guide complet pour les entreprises.",
     "cover": {
       "src": "https://cdn.prod.website-files.com/680f9779a28582b229e3585f/6ad75c8afa4efc3d1ef7d672_6ad75c433fb6cf4325dfac99_JE.png",
@@ -410,6 +414,7 @@ export const articles: Article[] = [
     "updated": "20/10/26",
     "title": "Junior-Entreprise ou freelance : que choisir pour votre projet ?",
     "seoTitle": "Freelance ou Junior-Entreprise ? | N7 Consulting",
+    "seoDescription": "Cadre juridique, équipe, suivi qualité, disponibilité : les vraies différences entre une Junior-Entreprise et un freelance pour choisir la bonne option.",
     "excerpt": "Cadre juridique, équipe, suivi qualité, disponibilité : les vraies différences entre une Junior-Entreprise et un freelance, pour choisir la bonne option selon votre projet.",
     "cover": {
       "src": "https://cdn.prod.website-files.com/680f9779a28582b229e3585f/6ad75c8afa4efc3d1ef7d678_6ad75c417eeb228613fdc5b0_choix.jpeg",
@@ -515,6 +520,7 @@ export const articles: Article[] = [
     "updated": "21/10/26",
     "title": "Combien coûte une étude réalisée par une Junior-Entreprise ?",
     "seoTitle": "Combien coûte une étude Junior-Entreprise ? | N7 Consulting",
+    "seoDescription": "JEH, périmètre, livrables, matériel : comment se construit le devis d’une étude en Junior-Entreprise et comment maîtriser votre budget. Découvrez nos conseils.",
     "excerpt": "JEH, périmètre, livrables, matériel : comment se construit le devis d'une étude en Junior-Entreprise et comment maîtriser votre budget.",
     "cover": {
       "src": "https://cdn.prod.website-files.com/680f9779a28582b229e3585f/6ad75c8afa4efc3d1ef7d675_6ad75c427eeb228613fdc6d5_couts.jpeg",

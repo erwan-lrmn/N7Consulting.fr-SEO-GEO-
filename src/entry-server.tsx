@@ -31,13 +31,13 @@ export const prerenderRoutes: PrerenderRoute[] = [
     path: '/',
     title: pageTitles.home,
     description:
-      'N7 Consulting, la Junior-Entreprise de l’ENSEEIHT à Toulouse, met les compétences de ses étudiants ingénieurs au service de vos projets en digital & data, ingénierie et éco-ingénierie. Demandez votre devis.',
+      'N7 Consulting, la Junior-Entreprise de l’ENSEEIHT à Toulouse, vous accompagne en digital & data, ingénierie et éco-ingénierie. Demandez votre devis gratuit.',
   },
   {
     path: '/nos-prestations',
     title: `${pageTitles.servicesOverview}${pageTitles.suffix}`,
     description:
-      'Découvrez les prestations de N7 Consulting, la Junior-Entreprise de l’ENSEEIHT à Toulouse : digital & data, ingénierie et éco-ingénierie. Nos étudiants ingénieurs vous accompagnent dans la réalisation de vos projets.',
+      'Découvrez les prestations de N7 Consulting, la Junior-Entreprise de l’ENSEEIHT à Toulouse : digital & data, ingénierie et éco-ingénierie. Demandez un devis.',
   },
   {
     path: '/digital-data',
@@ -58,18 +58,18 @@ export const prerenderRoutes: PrerenderRoute[] = [
     path: '/qui-sommes-nous',
     title: `${pageTitles.about}${pageTitles.suffix}`,
     description:
-      'N7 Consulting, la Junior-Entreprise de l’ENSEEIHT à Toulouse depuis 1977, vous présente sa mission, son équipe, ses alumnis et son histoire. Découvrez comment nos étudiants ingénieurs font vivre la Junior au quotidien.',
+      'N7 Consulting, la Junior-Entreprise de l’ENSEEIHT à Toulouse depuis 1977, vous présente sa mission, son équipe, ses alumnis et son histoire au quotidien.',
   },
   {
     path: '/actualites',
     title: `${pageTitles.news}${pageTitles.suffix}`,
     description:
-      'Les actualités de N7 Consulting, la Junior-Entreprise de l’ENSEEIHT à Toulouse : études de cas, événements, vie de la Junior et conseils pratiques pour vos projets digitaux, d’ingénierie et d’éco-ingénierie.',
+      'Les actualités de N7 Consulting, la Junior-Entreprise de l’ENSEEIHT à Toulouse : études de cas, événements et conseils pour vos projets digitaux et techniques.',
   },
   ...articles.map((article) => ({
     path: `/actualites/${article.slug}`,
     title: article.seoTitle,
-    description: article.excerpt,
+    description: article.seoDescription,
     type: 'article' as const,
     image: article.cover.src,
     imageAlt: article.cover.alt,
@@ -78,13 +78,13 @@ export const prerenderRoutes: PrerenderRoute[] = [
     path: '/contact',
     title: `${pageTitles.contact}${pageTitles.suffix}`,
     description:
-      'Contactez N7 Consulting, la Junior-Entreprise de l’ENSEEIHT à Toulouse, pour un devis ou un projet en digital & data, ingénierie ou éco-ingénierie. Notre équipe d’étudiants ingénieurs vous répond rapidement.',
+      'Contactez N7 Consulting, la Junior-Entreprise de l’ENSEEIHT à Toulouse, pour un devis ou un projet en digital & data, ingénierie ou éco-ingénierie. Réactifs.',
   },
   {
     path: '/mentions-legales',
     title: `${pageTitles.legal}${pageTitles.suffix}`,
     description:
-      'Mentions légales et politique de confidentialité de N7 Consulting, la Junior-Entreprise de l’ENSEEIHT à Toulouse. Consultez les informations sur l’éditeur, l’hébergeur et la protection de vos données personnelles.',
+      'Mentions légales et politique de confidentialité de N7 Consulting, la Junior-Entreprise de l’ENSEEIHT à Toulouse. Éditeur, hébergeur, données personnelles.',
   },
 ];
 
