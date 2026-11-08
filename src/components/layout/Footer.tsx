@@ -56,7 +56,14 @@ export default function Footer({ site }: FooterProps) {
                   ariaLabel={partner.name}
                   className="block transition-transform duration-300 hover:scale-105"
                 >
-                  <img src={partner.src} alt={partner.alt} loading="lazy" className="h-auto max-h-[50px] w-auto max-w-[140px] lg:max-w-[216px]" />
+                  <img
+                    src={partner.src}
+                    alt={partner.alt}
+                    width={partner.width}
+                    height={partner.height}
+                    loading="lazy"
+                    className="h-auto max-h-[50px] w-auto max-w-[140px] lg:max-w-[216px]"
+                  />
                 </SmartLink>
               </li>
             ))}

@@ -121,7 +121,14 @@ export default function StatsSection({ stats, partnersTitle, partners }: StatsSe
           {partners.map((partner) => (
             <li key={partner.name}>
               <SmartLink href={partner.href ?? '#'} ariaLabel={partner.name} className="block transition-transform duration-300 hover:scale-105">
-                <img src={partner.src} alt={partner.alt} loading="lazy" className="h-auto max-h-[50px] w-auto max-w-[150px] lg:max-w-[216px]" />
+                <img
+                  src={partner.src}
+                  alt={partner.alt}
+                  width={partner.width}
+                  height={partner.height}
+                  loading="lazy"
+                  className="h-auto max-h-[50px] w-auto max-w-[150px] lg:max-w-[216px]"
+                />
               </SmartLink>
             </li>
           ))}

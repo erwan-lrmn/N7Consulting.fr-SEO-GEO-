@@ -80,6 +80,8 @@ export default function Header() {
             <img
               src="/logo-n7-consulting.svg"
               alt={siteContent.name}
+              width={1124}
+              height={1062}
               className={`absolute left-0 top-1/2 w-full -translate-y-[52.5%] transition-[filter] duration-700 ${
                 solid ? 'brightness-100 invert-0' : 'brightness-0 invert'
               }`}

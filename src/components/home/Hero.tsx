@@ -10,7 +10,8 @@ interface HeroProps {
 const brochureLink = { label: 'Télécharger la plaquette', href: siteContent.brochure.href };
 
 /** Photo d'illustration provisoire : vue de l'ENSEEIHT depuis le canal du Midi. */
-const HERO_BACKGROUND = 'https://www.enseeiht.fr/_resource/charte/accueil/header-bg.jpg';
+const HERO_BACKGROUND =
+  'https://wsrv.nl/?url=https%3A%2F%2Fwww.enseeiht.fr%2F_resource%2Fcharte%2Faccueil%2Fheader-bg.jpg&output=webp&w=1920&q=80';
 const HERO_BACKGROUND_CREDIT_URL = 'https://www.enseeiht.fr/';
 
 export default function Hero({ content }: HeroProps) {
@@ -26,6 +27,8 @@ export default function Hero({ content }: HeroProps) {
           id="hero-logo"
           src="/logo-n7-consulting-white.svg"
           alt="N7 Consulting, la Junior-Entreprise de l’ENSEEIHT"
+          width={1124}
+          height={1062}
           className="h-auto max-h-[50svh] w-auto max-w-[86vw]"
         />
         <h1 className="sr-only">{content.title}</h1>

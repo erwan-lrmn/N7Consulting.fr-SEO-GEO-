@@ -8,12 +8,50 @@
       content="N7 Consulting, la Junior-Entreprise de l'ENSEEIHT à Toulouse : l'expertise et le dynamisme de ses étudiants ingénieurs au service de vos projets."
     />
     <title>N7 Consulting | Junior-Entreprise de l’ENSEEIHT à Toulouse</title>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "N7 Consulting",
+        "url": "https://n7consulting.erwan-2b1.workers.dev/",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Toulouse",
+          "addressCountry": "FR"
+        }
+      }
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://wsrv.nl" />
+    <script>
+      if (location.pathname === '/' || location.pathname === '/index.html') {
+        var heroPreload = document.createElement('link');
+        heroPreload.rel = 'preload';
+        heroPreload.as = 'image';
+        heroPreload.fetchPriority = 'high';
+        heroPreload.href =
+          'https://wsrv.nl/?url=https%3A%2F%2Fwww.enseeiht.fr%2F_resource%2Fcharte%2Faccueil%2Fheader-bg.jpg&output=webp&w=1920&q=80';
+        document.head.appendChild(heroPreload);
+      }
+    </script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&family=Libre+Baskerville:wght@400;700&family=Montserrat:wght@400;500;600;700&display=swap"
+      rel="preload"
+      as="style"
+    />
     <link
       href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&family=Libre+Baskerville:wght@400;700&family=Montserrat:wght@400;500;600;700&display=swap"
       rel="stylesheet"
+      media="print"
+      onload="this.media='all'"
     />
+    <noscript>
+      <link
+        href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&family=Libre+Baskerville:wght@400;700&family=Montserrat:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+      />
+    </noscript>
   </head>
   <body>
     <div id="root"></div>

@@ -1,14 +1,16 @@
+import { lazy } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Layout from './components/layout/Layout';
-import AboutPage from './pages/AboutPage';
-import ArticlePage from './pages/ArticlePage';
-import ContactPage from './pages/ContactPage';
 import HomePage from './pages/HomePage';
-import LegalPage from './pages/LegalPage';
-import NewsPage from './pages/NewsPage';
-import NotFoundPage from './pages/NotFoundPage';
-import ServicePage from './pages/ServicePage';
-import ServicesOverviewPage from './pages/ServicesOverviewPage';
+
+const AboutPage = lazy(() => import('./pages/AboutPage'));
+const ArticlePage = lazy(() => import('./pages/ArticlePage'));
+const ContactPage = lazy(() => import('./pages/ContactPage'));
+const LegalPage = lazy(() => import('./pages/LegalPage'));
+const NewsPage = lazy(() => import('./pages/NewsPage'));
+const NotFoundPage = lazy(() => import('./pages/NotFoundPage'));
+const ServicePage = lazy(() => import('./pages/ServicePage'));
+const ServicesOverviewPage = lazy(() => import('./pages/ServicesOverviewPage'));
 
 export default function App() {
   return (

@@ -17,6 +17,8 @@ export interface ImageAsset {
 export interface BrandLogo extends ImageAsset {
   name: string;
   href?: string;
+  width?: number;
+  height?: number;
 }
 
 export interface NavChild extends LinkItem {
