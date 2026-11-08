@@ -46,10 +46,29 @@ function ScrollManager() {
   return null;
 }
 
+function CanonicalManager() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    const path = pathname === '/' ? '/' : pathname.replace(/\/+$/, '');
+    const href = `${window.location.origin}${path}`;
+    let link = document.head.querySelector<HTMLLinkElement>('link[rel="canonical"]');
+    if (!link) {
+      link = document.createElement('link');
+      link.rel = 'canonical';
+      document.head.appendChild(link);
+    }
+    link.href = href;
+  }, [pathname]);
+
+  return null;
+}
+
 export default function Layout() {
   return (
     <>
       <ScrollManager />
+      <CanonicalManager />
       <Header />
       <main>
         <Suspense fallback={<div className="min-h-screen bg-white" aria-hidden="true" />}>

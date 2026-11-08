@@ -29,7 +29,7 @@ function LogoMarquee({ logos }: { logos: BrandLogo[] }) {
                 >
                   <img
                     src={logo.src}
-                    alt={copy.hidden ? '' : logo.alt}
+                    alt={logo.alt}
                     loading="lazy"
                     className="h-9 w-auto max-w-[180px] object-contain sm:h-10 sm:max-w-[200px]"
                   />

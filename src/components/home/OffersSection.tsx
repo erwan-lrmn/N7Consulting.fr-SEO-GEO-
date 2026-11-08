@@ -14,7 +14,6 @@ interface OffersSectionProps {
 
 export default function OffersSection({ title, groups, categories }: OffersSectionProps) {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
-  const activeGroup = openIndex === null ? null : groups[openIndex];
 
   return (
     <section id="prestations" className="bg-white px-[5%]">
@@ -65,15 +64,17 @@ export default function OffersSection({ title, groups, categories }: OffersSecti
           })}
         </div>
 
-        {activeGroup && (
+        {groups.map((group, groupIndex) => (
           <div
-            id={`offers-panel-${openIndex}`}
+            key={group.title}
+            id={`offers-panel-${groupIndex}`}
             role="region"
-            aria-label={`Offres ${activeGroup.title}`}
+            aria-label={`Offres ${group.title}`}
+            hidden={openIndex !== groupIndex}
             className="mt-6 animate-fade-down rounded-[10px] border border-n7-line bg-n7-mist p-6"
           >
             <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
-              {activeGroup.offers.map((offer, offerIndex) => (
+              {group.offers.map((offer, offerIndex) => (
                 <Reveal key={offer.title} delay={offerIndex * 60} className="h-full">
                   <Link to={offer.href} className="group block h-full">
                     <article className="flex h-full flex-col rounded-[8px] border border-n7-line bg-white p-5 text-left shadow-actu transition-all duration-300 group-hover:-translate-y-1 group-hover:border-n7-navy group-hover:shadow-actu-hover">
@@ -95,7 +96,7 @@ export default function OffersSection({ title, groups, categories }: OffersSecti
               ))}
             </div>
           </div>
-        )}
+        ))}
       </div>
     </section>
   );

@@ -1,7 +1,48 @@
-<?xml version="1.0" encoding="UTF-8"?> 
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"> 
-<url>
-  <loc>https://n7consulting.erwan-2b1.workers.dev/</loc>
-  <lastmod>2026-11-08</lastmod>
-</url>
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://n7consulting.erwan-2b1.workers.dev/</loc>
+  </url>
+  <url>
+    <loc>https://n7consulting.erwan-2b1.workers.dev/nos-prestations</loc>
+  </url>
+  <url>
+    <loc>https://n7consulting.erwan-2b1.workers.dev/digital-data</loc>
+  </url>
+  <url>
+    <loc>https://n7consulting.erwan-2b1.workers.dev/ingenierie-it</loc>
+  </url>
+  <url>
+    <loc>https://n7consulting.erwan-2b1.workers.dev/eco-ingenierie</loc>
+  </url>
+  <url>
+    <loc>https://n7consulting.erwan-2b1.workers.dev/qui-sommes-nous</loc>
+  </url>
+  <url>
+    <loc>https://n7consulting.erwan-2b1.workers.dev/actualites</loc>
+  </url>
+  <url>
+    <loc>https://n7consulting.erwan-2b1.workers.dev/actualites/hackathon-ia-for-impact-2026-n7-consulting-partenaire-technique</loc>
+  </url>
+  <url>
+    <loc>https://n7consulting.erwan-2b1.workers.dev/actualites/etude-de-cas-vinci-facilities-application-podcasts</loc>
+  </url>
+  <url>
+    <loc>https://n7consulting.erwan-2b1.workers.dev/actualites/mandat-49-cap-sur-le-mandat-50-et-les-50-ans</loc>
+  </url>
+  <url>
+    <loc>https://n7consulting.erwan-2b1.workers.dev/actualites/comment-faire-appel-a-une-junior-entreprise</loc>
+  </url>
+  <url>
+    <loc>https://n7consulting.erwan-2b1.workers.dev/actualites/junior-entreprise-ou-freelance-que-choisir</loc>
+  </url>
+  <url>
+    <loc>https://n7consulting.erwan-2b1.workers.dev/actualites/combien-coute-une-etude-junior-entreprise</loc>
+  </url>
+  <url>
+    <loc>https://n7consulting.erwan-2b1.workers.dev/contact</loc>
+  </url>
+  <url>
+    <loc>https://n7consulting.erwan-2b1.workers.dev/mentions-legales</loc>
+  </url>
 </urlset>

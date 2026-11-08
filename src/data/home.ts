@@ -43,7 +43,7 @@ export const servicesOverview: ServicesOverviewContent = {
 
 export const homeContent: HomeContent = {
   hero: {
-    title: 'L’innovation étudiante au cœur de vos projets',
+    title: 'N7 Consulting, l’innovation étudiante au cœur de vos projets',
     descriptionLines: [
       'Parce que chaque projet mérite une approche innovante,',
       'N7 Consulting, la Junior-Entreprise de l’ENSEEIHT à Toulouse, met à votre disposition l’expertise et le dynamisme de ses étudiants ingénieurs.',
